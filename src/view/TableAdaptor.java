@@ -6,6 +6,7 @@ import util.Const;
 import util.JSONUtils;
 
 import javax.swing.*;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -32,7 +33,15 @@ public class TableAdaptor extends JTable{
       usersTableModal = new TableModalAdaptor(usersList);
       jTable.setRowHeight(Const.rowHeight);
       jTable.setModel(usersTableModal);
+      jTable.setSelectionBackground(Color.gray);
 
+      // Add styles to table header
+      JTableHeader jTableHeader = jTable.getTableHeader();
+      jTableHeader.setOpaque(false);
+      jTableHeader.setBackground(Color.black);
+      jTableHeader.setFont(new Font("SansSerif", Font.BOLD, 12));
+      jTableHeader.setForeground(Color.white);
+      jTableHeader.setPreferredSize(new Dimension(1000, 40));
       // Set remove buttons in the table
       jTable.getColumn(Const.removeText).setCellRenderer(new TableCellAdaptor());
       this.addActionsToRows();
@@ -122,7 +131,7 @@ public class TableAdaptor extends JTable{
 
             // If the column clicked is the delete button, it will delete this line.
             if (col == usersTableModal.getColumnCount() - 1) {
-               DeleteRowWorker deleteRowWorker = new DeleteRowWorker(usersList.get(row).getName(), row);
+               DeleteRowWorker deleteRowWorker = new DeleteRowWorker(usersList.get(row).getFullName(), row);
                deleteRowWorker.execute();
             }
          }

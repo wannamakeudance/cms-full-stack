@@ -16,6 +16,7 @@ public class LoginForm {
     private JTextField passwordInput;
     private JLabel usernameLabel;
     private JLabel passwordLabel;
+    private JLabel tipsLabel;
     private JButton button;
     private final String loginStatus = "login";
     private final  String logoutStatus = "logout";
@@ -32,12 +33,14 @@ public class LoginForm {
         button = new JButton("login");
         usernameInput.setColumns(15);
         passwordInput.setColumns(15);
+        tipsLabel = new JLabel(Const.loginTips);
 
         loginPanel.add(usernameLabel);
         loginPanel.add(usernameInput);
         loginPanel.add(passwordLabel);
         loginPanel.add(passwordInput);
         loginPanel.add(button);
+        loginPanel.add(tipsLabel);
 
         this.addEventListener();
     }
@@ -86,11 +89,12 @@ public class LoginForm {
                     usernameInput.setEnabled(!_isLogin);
                     passwordInput.setEnabled(!_isLogin);
                     button.setText(text);
-
                     if (_isLogin) {
                         tableAdaptor = new TableAdaptor(loginPanel);
+                        tipsLabel.setText("");
                     } else {
                         tableAdaptor.removeScrollPaneForTable();
+                        tipsLabel.setText(Const.loginTips);
                     }
                 } else {
                     new DialogAdaptor(errorMsg);

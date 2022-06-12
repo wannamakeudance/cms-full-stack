@@ -27,7 +27,7 @@ public class User {
         ModifiedDateTime = (String) hashMap.get("ModifiedDateTime");;
     }
 
-    public String FirstName() {
+    public String getFirstName() {
         return FirstName;
     }
 
@@ -39,13 +39,12 @@ public class User {
         return DateOfBirth;
     }
 
-    public String getName() {
-        return UserName;
+    public String getAboutMeDescription() {
+        return  AboutMeDescription;
     }
 
-
-    public String getBirthday() {
-        return DateOfBirth;
+    public String getFullName() {
+        return UserName;
     }
 
     public void setName(String name) {
@@ -56,9 +55,15 @@ public class User {
         FirstName = firstName;
     }
 
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
 
-    public void setBirthday(String birthday) {
+    public void setDateOfBirth(String birthday) {
         DateOfBirth = birthday;
     }
 
+    public void setAboutMeDescription(String aboutMeDescription) {
+        AboutMeDescription = aboutMeDescription;
+    }
 }

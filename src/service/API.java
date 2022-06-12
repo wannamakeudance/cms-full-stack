@@ -49,7 +49,6 @@ public class API {
                 .method("POST", HttpRequest.BodyPublishers.ofString(json));
 
         HttpRequest request = builder.build();
-
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return  response.statusCode();
     }
@@ -62,7 +61,6 @@ public class API {
                 .method("POST", HttpRequest.BodyPublishers.noBody());
 
         HttpRequest request = builder.build();
-
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return  response.statusCode();
     }
@@ -76,7 +74,6 @@ public class API {
                 .method("DELETE", HttpRequest.BodyPublishers.noBody());
 
         HttpRequest request = builder.build();
-
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return  response.statusCode();
     }
@@ -89,7 +86,6 @@ public class API {
                 .method("GET", HttpRequest.BodyPublishers.noBody());
 
         HttpRequest request = builder.build();
-
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
         List<Object> users = JSONUtils.toList(json, Object.class);

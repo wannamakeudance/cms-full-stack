@@ -35,13 +35,18 @@ public class TableModalAdaptor extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        User row = _data.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return _data.get(rowIndex).getName();
+                return row.getFullName();
             case 1:
-                return _data.get(rowIndex).getLastName();
+                return row.getFirstName();
             case 2:
-                return _data.get(rowIndex).getDateOfBirth();
+                return row.getLastName();
+            case 3:
+                return row.getDateOfBirth();
+            case 4:
+                return row.getAboutMeDescription();
             default:
                 return "";
         }
@@ -49,20 +54,24 @@ public class TableModalAdaptor extends AbstractTableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        super.setValueAt(aValue, rowIndex, columnIndex);
-        User rowData = _data.get(rowIndex);
 
+        User row = _data.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                rowData.setName((String) aValue);
+                row.setName(aValue.toString());
                 break;
             case 1:
-                rowData.setBirthday((String) aValue);
+                row.setFirstName(aValue.toString());
                 break;
             case 2:
-                rowData.setFirstName((String) aValue);
+                row.setLastName(aValue.toString());
                 break;
             case 3:
+                row.setDateOfBirth(aValue.toString());
+                break;
+            case 4:
+                row.setAboutMeDescription(aValue.toString());
+            default:
                 break;
         }
     }
