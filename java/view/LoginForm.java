@@ -13,7 +13,7 @@ public class LoginForm {
     private JPanel loginPanel;
     private TableAdaptor tableAdaptor;
     private JTextField usernameInput;
-    private JTextField passwordInput;
+    private JPasswordField passwordInput;
     private JLabel usernameLabel;
     private JLabel passwordLabel;
     private JLabel tipsLabel;
@@ -29,7 +29,7 @@ public class LoginForm {
         usernameLabel = new JLabel("username");
         passwordLabel = new JLabel("password");
         usernameInput = new JTextField("");
-        passwordInput = new JTextField("");
+        passwordInput = new JPasswordField("");
         button = new JButton("login");
         usernameInput.setColumns(15);
         passwordInput.setColumns(15);

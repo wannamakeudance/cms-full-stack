@@ -86,6 +86,10 @@ If you want to see the website of Blogging system, you can visit `http://localho
 
 Run `./java/Main.java` and you can see the admin UI.
 
+![spec1](./nodejs/spec/spec1.png)
+
+![spec2](./nodejs/spec/spec2.png)
+
 #### 4. The Admin User Information
 
 > username: user1
