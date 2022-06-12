@@ -14,7 +14,7 @@ cs718-individual-java-final-project-wannamakeudance
 │  │  └─ User.java
 │  ├─ service                   // Handle HttpRequest and HttpClient
 │  │  └─ API.java
-│  ├─ util                      // The common const and utils
+│  ├─ util                      // The common const variables and utils
 │  │  ├─ Const.java
 │  │  └─ JSONUtils.java
 │  └─ view                      // Swing UI components     
@@ -40,7 +40,7 @@ cs718-individual-java-final-project-wannamakeudance
    ├─ routes                    // the APIs for these two platforms 
    │  ├─ API.js
    │  ├─ ...
-   ├─ sql                       // SQL to initialize database
+   ├─ sql                       // SQL to initialize the database
    ├─ utils
    │  └─ index.js
    └─ views
@@ -48,12 +48,13 @@ cs718-individual-java-final-project-wannamakeudance
 
 ## Start
 ### Initialize the nodejs parts
-1. Open the current project and execute the following commands.
+#### 1. Open the current project and execute the following commands.
+
 > cd nodejs/
 > 
 > npm install
 
-2. Initialize the database
+#### 2. Initialize the database
 
 Delete the `./nodejs/project-database.db` file if it exists.
 
@@ -63,7 +64,8 @@ Copy the SQL in `./nodejs/sql/project-database-init-script.sql`and execute them.
 
 Hint: remember to write to file at last and make the database effective.
 
-3. Start server 
+#### 3. Start server 
+
 > cd nodejs/
 >
 > node app.js
