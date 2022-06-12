@@ -44,7 +44,7 @@ router.get('/api/users', async function (req, res) {
         const userDetail = await usersDao.getUserDetailsByUserName(req.session.username);
         const userrole = userDetail.UserRoleID;
 
-        if (userrole == "1") {
+        if (userrole === 1) {
             const alluser = await usersDao.getAllUserAccountsDetails();
             for (let i = 0; i < alluser.length; i++) {
                 const e = alluser[i];
@@ -64,11 +64,10 @@ router.get('/api/users', async function (req, res) {
 router.delete('/api/users/:id', async function (req, res) {
     try {
         const userID = req.params.id;
-    
         const userDetail = await usersDao.getUserDetailsByUserName(req.session.username);
         const userrole = userDetail.UserRoleID;
 
-        if (userrole === "1") {
+        if (userrole === 1) {
             const deleteUserResult = await usersDao.deleteUser(userID);
             if (deleteUserResult.changes == 0) {
                 res.sendStatus(400);
