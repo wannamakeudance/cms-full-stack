@@ -47,6 +47,8 @@ public class TableModalAdaptor extends AbstractTableModel {
                 return row.getDateOfBirth();
             case 4:
                 return row.getAboutMeDescription();
+            case 5:
+                return row.getUserRole();
             default:
                 return "";
         }

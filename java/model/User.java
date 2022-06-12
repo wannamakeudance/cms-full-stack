@@ -26,6 +26,9 @@ public class User {
         CreatedDateTime = (String) hashMap.get("CreatedDateTime");;
         ModifiedDateTime = (String) hashMap.get("ModifiedDateTime");;
     }
+    public String getFullName() {
+        return UserName;
+    }
 
     public String getFirstName() {
         return FirstName;
@@ -43,8 +46,8 @@ public class User {
         return  AboutMeDescription;
     }
 
-    public String getFullName() {
-        return UserName;
+    public String getUserRole() {
+        return UserRoleID == 1 ? "yes" : "no";
     }
 
     public void setName(String name) {

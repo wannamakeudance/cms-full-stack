@@ -2,7 +2,7 @@ package util;
 
 public class Const {
     public static final String removeText = "Delete";
-    public static final String[] columnsNames = {"UserName", "FirstName", "LastName", "Birthday","Desc", Const.removeText};
+    public static final String[] columnsNames = {"UserName", "FirstName", "LastName", "Birthday","Desc", "IsAdmin", Const.removeText};
     public static final int rowHeight = 35;
     public static final int windowWidth = 1000;
     public static final int windowHeight = 600;

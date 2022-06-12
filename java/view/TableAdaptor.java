@@ -48,6 +48,7 @@ public class TableAdaptor extends JTable{
 
       // This is essential for showing titles
       scrollPaneForTable = new JScrollPane(jTable);
+      scrollPaneForTable.setPreferredSize(new Dimension(Const.windowWidth, Const.windowHeight - 30));
       jPanel.add(scrollPaneForTable);
    }
 
