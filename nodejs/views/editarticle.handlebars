@@ -1,0 +1,108 @@
+{{> header}}
+
+<div class="container">
+    <h2>Edit article</h2>
+    <form action="/editarticle?articleID={{articleID}}&deleteImg=" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" id="edit-form"
+        name="newArticle">
+        <div class="form-widget p-3 mb-4 bg-lightgray">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="form-label" for="title"><span class="form-require">*</span>Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="{{articleTitle}}">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="form-label" for="content"><span class="form-require">*</span>Content</label>
+                        <textarea type="textarea" class="form-control" id="content"
+                            style="resize: none;min-height: 240px;max-height: 240px;" name="content">{{{content}}}</textarea>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-8">
+                    <div class="form-group">
+                        <div class="flex-row align-center">
+                            <label for="coverImage" class="">Cover image</label>
+                            <p class="text-smaller">(Recommended: .png or .jpg, < 500KB)</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="input-group">
+                            <div class="input-group-btn input-group-append">
+                                <div class="flex-col">
+                                    <input id="coverImage" type="file" class="file" name="coverImage"
+                                        accept=".png,.jpg,.jpeg,.bmp,.gif" onchange="loadFile(event)">&nbsp;
+                                        <img id="output" width="500" />
+                                    <div class="position-relative" id="ori-img-div">
+                                        <img src="{{coverImagePath}}" alt="" width="500" id="originalImage" class="">
+                                        {{#if notDefaultCover}}
+                                        <button onclick="deleteOldImage()" class="button button-3d button-small button-red position-absolute cross-symbol">✖</button>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+            <input type="submit" value="Publish" class="button button-3d">
+        </div>
+
+    </form>
+
+
+</div>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        setup: function (editor) {
+            editor.on('change', function (e) {
+                editor.save();
+            });
+        },
+        plugins: 'a11ychecker advcode table advlist lists image media anchor link autoresize',
+        toolbar: 'a11ycheck | blocks bold italic underline | bullist numlist',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        menubar: false,
+        max_height: 500,
+        min_height: 250,
+        lists_indent_on_tab: false,
+    });
+
+    var loadFile = function (event) {
+        let oriImageDiv = document.getElementById('ori-img-div');
+        oriImageDiv.outerHTML = ``;
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('output');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    };
+
+    function validateForm() {
+        let title = document.forms["newArticle"]["title"].value;
+        if (title == "") {
+            alert("Title must be filled out");
+            return false;
+        }
+        let content = document.forms["newArticle"]["content"].value;
+        if (content == "") {
+            alert("Content must be filled out");
+            return false;
+        }
+    }
+
+    function deleteOldImage() {
+        let imageDiv = document.getElementById('ori-img-div');
+        imageDiv.outerHTML = ``;
+        let editForm = document.getElementById('edit-form');
+        editForm.action += 'true';
+    }
+
+</script>

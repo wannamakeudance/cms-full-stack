@@ -1,0 +1,27 @@
+<section class="article-list-container">
+    <div class="flex-row align-center articles-filter">
+        Sorting by:
+        <button class="sort-option-selected sort-option" id="sort-new">Newest</button>
+        <button class="sort-option" id="sort-old">Oldest</button>
+        {{#if showUserName}}
+        <button class="sort-option" id="sort-username">Username</button>
+        {{/if}}
+        <button class="sort-option" id="sort-title">Title</button>
+    </div>
+    {{#if articleList.length}}
+        <section id="artiles-list">
+            {{#each articleList}}
+                {{> article-card}}
+            {{/each}}
+        </section>
+    {{else}}
+        <h4 class="empty-tips">
+            Empty content.<br>
+            {{#if isCurrentUser}}
+            <a href="/newarticle">
+                Please create articles.
+            </a>   
+            {{/if}}
+        </4>
+    {{/if}}
+</section>

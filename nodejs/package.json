@@ -1,0 +1,22 @@
+{
+  "name": "cs719-final-project-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.3",
+    "html-to-text": "^8.2.0",
+    "jimp": "^0.16.1",
+    "multer": "^1.4.3",
+    "sql-template-strings": "^2.2.2",
+    "sqlite": "^4.1.1",
+    "sqlite3": "^5.0.8",
+    "uuid": "^8.3.2"
+  }
+}

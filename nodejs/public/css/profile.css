@@ -1,0 +1,120 @@
+#avatar {
+    margin: 20px;
+}
+
+#avatar>img {
+    border-radius: 50%;
+}
+
+#introduction {
+    text-align: left;
+    margin: 5px;
+}
+
+#birthday {
+    text-align: left;
+    margin: 5px;
+}
+
+#Edit-profile,
+#Analystic-Center {
+    text-align: left;
+    margin: 5px;
+    padding: 2px 10px;
+
+}
+
+#user {
+    grid-area: u;
+    margin: 10px;
+    padding: 20px;
+    background-color:white;
+    box-shadow: 3px 3px 5px #706f6f;
+    text-align: center;
+}
+#favorite-articles {
+    grid-area: f;
+    background-color: white;
+    box-shadow: 3px 3px 5px #706f6f;
+    padding: 0 30px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.MyDetails{
+    text-align: left;
+    margin: 5px;
+}
+.articles {
+    margin: 20px;
+    box-shadow: 5px 5px darkgray;
+}
+
+#creat a {
+    padding: 10px;
+    margin: 10px;
+
+}
+
+.articles>a {
+    float: left;
+    width: 35%;
+    margin: 10px;
+}
+
+.articles>div {
+    float: right;
+    width: 60%;
+
+}
+
+.profile-title {
+    font-size: 15px;
+}
+
+#profile-container {
+    display: grid;
+    background-color: rgba(231, 229, 229, 0.903);
+    grid-template-columns: 0.5fr 1.5fr 1fr 2fr 1fr 0.5fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+
+        ". u f f f ."
+        ". . f f f .";
+}
+
+@media (max-width:900px) {
+    #profile-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            " u "
+            " f ";
+    }
+    .articles>div {
+        width: auto;
+    }
+    .articles>a {
+         width: auto;
+     }
+}
+@media (max-width:500px) {
+    #profile-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            " u "
+            " f ";
+    }
+    .articles>a {
+       float: none;
+        width: auto;
+        margin: 10px;
+    }
+    
+    .articles>div {
+        width: auto;
+        float: none;
+        text-align: center;
+    }
+}

@@ -1,0 +1,24 @@
+<section class="login-container sign-up-container">
+    <form action="/signup" method="post" id="accountForm" class="sign-up box-shadow-basic">
+        <h3>Account Sign Up</h3>
+        {{> form-error-message}}
+        <input required type="text" name="username" placeholder="enter a username">
+        <input required type="text" name="firstname" placeholder="enter your firstname">
+        <input required type="text" name="lastname" placeholder="enter your lastname">
+        <input required type="password" name="password" placeholder="enter a password">
+        <input required type="password" name="password" placeholder="enter the password again">
+        <label>Birthday</label>
+        <input required type="date" name="birthday" placeholder="enter your birthday">
+        <input required type="text" name="introduce" placeholder="enter your introduction">
+        <label>Choose Your Avatar </label>
+        <section class="avatars-list">
+            {{#each avatarlist}}
+            <label class="avatars">
+                <input type="radio" name="avatar" value="{{this.AvatarID}}"/>
+                <img src="{{this.AvatarPath}}"/>
+            </label>
+            {{/each}}     
+        </section>
+        <button type="submit" class="basic-btn">submit</button>
+    </form>
+</section>

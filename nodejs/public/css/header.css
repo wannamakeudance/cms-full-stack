@@ -1,0 +1,162 @@
+.header-nav-container {
+    background: #000000db;
+    height: 100px;
+    color: #fff;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.header-nav-container h3 {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav-container span {
+    color: white !important;
+}
+
+.user-info-container {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-container,
+.messages-btn {
+    position: relative;
+}
+
+.avatar-container:hover .user-info-list,
+.messages-container:hover .messages-list{
+    display: block;
+}
+
+.user-info-list,
+.messages-list {
+    min-width: 200px;
+    display: none;
+    color: #000;
+    position: absolute;
+    right: -40px;
+    top: 50px;
+    list-style: none;
+    box-shadow: 2px 2px 6px 2px #999;
+    background-color: #fff;
+    padding: 0;
+    z-index: 99;
+}
+
+.messages-list {
+    max-height: 450px;
+    overflow-y: auto;
+    right: 50px;
+    top: 65px;
+}
+
+.messages-list a {
+    display: flex;
+    width: 300px;
+    align-items: center;
+    padding: 10px;
+}
+
+.messages-list .read {
+    background: #eee;
+    opacity: .6;
+}
+
+.messages-list .title {
+    font-weight: bold;
+}
+
+.messages-count {
+    display: none;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background-color: red;
+    border-radius: 50%;
+    top: -10px;
+    right: -10px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 22px;
+    text-align: center;
+}
+
+.messages-count.show {
+    display: block;
+}
+
+.messages-imager {
+    position: relative;
+}
+
+.messages-list img {
+    width: 80px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.messages-list div {
+    flex: 2;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.user-info-container li {
+    text-align: center;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.messages-list li:not(.read):hover,
+.user-info-list a:hover {
+    background: #eee;
+    color: #1ABC9C;
+}
+
+.user-info-container a {
+    color: #fff;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.user-info-container > a:hover {
+    color: #1ABC9C;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.user-info-container .delete-account {
+    cursor: pointer;
+}
+
+.user-info-list a {
+    color: #000;
+    display: block;
+    padding: 20px;
+    margin-right: 0;
+}
+
+.avatar-container {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: #eee;
+    margin-left: 20px;
+    padding: 5px;
+}
+
+.avatar-container img {
+    height: 100%;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 800px) {
+    .header-nav-container span {
+        display: none;
+    }
+}

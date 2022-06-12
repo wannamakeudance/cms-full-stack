@@ -1,0 +1,25 @@
+{{> header}}
+<section class="login-container edit-account-container">
+    <form action="/accountedit" method="post" 
+        id="accountForm" 
+        class="sign-up edit-account box-shadow-basic">
+        {{> form-error-message}}
+        <input required value="{{userDetails.UserName}}"type="text" name="username" placeholder="enter a username">
+        <input required value="{{userDetails.FirstName}}" type="text" name="firstname" placeholder="enter your firstname">
+        <input required value="{{userDetails.LastName}}" type="text" name="lastname" placeholder="enter your lastname">
+        <label>birthday</label>
+        <input required value="{{userDetails.DateOfBirth}}" type="date" name="birthday" placeholder="enter your birthday">
+        <input required value="{{userDetails.AboutMeDescription}}" type="text" name="introduce" placeholder="enter your introduction">
+        <label>Choose Your Avatar </label>
+        <section class="avatars-list">
+            {{#each avatarlist}}
+            <label class="avatars">
+                <input type="radio" name="avatar" value="{{this.AvatarID}}"/>
+                <img src="{{this.AvatarPath}}"/>
+            </label>
+            {{/each}}
+        </section>
+        <input type="hidden" value="{{userDetails.AvatarID}}">
+        <button type="submit" class="basic-btn">submit</button>
+    </form>
+</section>

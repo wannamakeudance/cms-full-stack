@@ -1,0 +1,81 @@
+{{> header}}
+<div id="analysis-container">
+
+    <div id="analysis-user">
+        <div id="analysis-avatar">
+            <img src="{{profileavatar}}" alt="" width="100px"><br>
+            <span class="user-name">{{profileusername}}</span>
+        </div>
+        <div>
+            <a href="/following?username={{profileusername}}">Following</a><span class="following-number">
+                {{totalUsersSubscribedTo}}</span>
+            <a href="/followers?username={{profileusername}}">Followers</a><span class="followers-number">
+                {{totalSubscribers}}</span>
+        </div>
+        <div id="analysis-introduction">
+            <h3>Introduction</h3>
+            <p>{{introduction}}</p>
+        </div>
+        <div id="analysis-birthday">
+            <h3>Birthday</h3>
+            <p>{{birthday}}</p>
+        </div>
+        <div class="MyDetails">
+            <h3>My Details</h3>
+        </div>
+        <div id="Edit-profile">
+            <a href="/accountedit">Edit Profile</a>
+        </div>
+
+        <div id="Analystic-Center">
+            <a href="/analytics?username={{profileusername}}">Analytics</a>
+        </div>
+    </div>
+    <div id="Total">
+        <div>
+            <span class="followers-number"> {{totalSubscribers}}</span>
+            <p>Total number of followers</p>
+        </div>
+        <div>
+            <span class="comments-number"> {{totalComments}}</span>
+            <p>Total number of comments</p>
+        </div>
+        <div>
+            <span class="likes-number"> {{totalLikes}}</span>
+            <p>Total number of likes</p>
+        </div>
+    </div>
+    <div id="popular-articles">
+        {{#if top3article}}
+        <h2>The top 3 most “popular” articles</h2>
+        <p id="value-popularity">popularity = Total Comments + Total Likes</p>
+        <p id="ranking">top1->top2->top3</p>
+        <div id="articles">
+
+            {{#each top3article}}
+            <div>
+                <a href="/viewarticle?articleID={{this.ArticleID}}"><img src="{{this.ArticleImagePath}}"
+                        class="cover-images"></a>
+                <a href="/viewarticle?articleID={{this.ArticleID}}">
+                    <h3 class="title"> {{this.ArticleTitle}}</h3>
+                </a>
+                <span class="analytic-date">{{this.CreatedDateTime}}<br> popularity:{{this.PopularityRating}} <br>
+                    TotalComments:{{this.TotalComments}} <br>
+                    TotalLikes:{{this.TotalLikes}}</span><br>
+                <a href="/viewarticle?articleID={{this.ArticleID}}"> Read more.</a>
+            </div>
+            {{/each}}
+
+        </div>
+        {{else}}
+        <p class="havenoarticle">Sorry, you have no articles!</p>
+        {{/if}}
+    </div>
+    <div id="chart">
+        <h3>A histogram chart showing daily total comments</h3>
+        <h3> (x axis: date, y axis:comments)</h3>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        <script src="./js/chart.js"></script>
+
+    </div>
+</div>

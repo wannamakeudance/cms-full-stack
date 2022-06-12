@@ -1,0 +1,107 @@
+#avatar{
+    margin: 20px;
+}
+
+#introduction{
+    text-align: left;
+    margin: 5px;
+}
+#birthday{
+    text-align: left;
+    margin: 5px;
+}
+#button{
+    text-align: left;
+    margin: 5px;
+}
+#user{
+    grid-area: u;
+    margin: 30px;
+    background-color:white;
+    box-shadow: 3px 3px 5px #706f6f;
+    text-align: center;
+}
+.following-card>img{
+   border-radius: 50%;
+   border:1px solid gray;
+   float: left;
+}
+.following-card>div{
+    float: right;
+    padding: 10px;
+}
+.following-card{
+    margin: 10px;
+    
+   
+}
+#following{
+    grid-area: f;
+    background-color:white;
+    box-shadow: 5px 5px darkgray;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    flex-flow: row wrap;
+}
+#followers-container{
+    display: grid;
+    background-color: rgba(231, 229, 229, 0.903);
+    grid-template-columns: 0.2fr 1fr 1fr 1fr 0.2fr ;
+    grid-template-rows: auto;
+    grid-template-areas:
+    ". u f f ."
+    ". . f f ." 
+    ;
+}
+.followers-card>img{
+    border-radius: 50%;
+    border:1px solid gray;
+    float: left;
+ }
+ .followers-card>div{
+     float: right;
+     padding: 10px;
+ }
+ .followers-card{
+     margin: 10px;
+     
+    
+ }
+ #followers{
+     grid-area: f;
+     background-color:white;
+     box-shadow: 5px 5px darkgray;
+     margin: 20px;
+     display: flex;
+     flex-direction: row;
+     justify-content:space-evenly;
+     flex-flow: row wrap;
+ }
+ #following-container{
+    display: grid;
+    background-color: rgba(231, 229, 229, 0.903);
+    grid-template-columns: 0.2fr 1fr 1fr 1fr 0.2fr ;
+    grid-template-rows: auto;
+    grid-template-areas:
+    ". u f f ."
+    ". . f f ." 
+    ;
+}
+@media (max-width:750px) {
+    #following-container,#followers-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            " u "
+            " f "
+            ;
+    }
+    .followers-card>div{
+        float: none; 
+    }
+    .followers-card>img{
+        float: none;
+     }
+}

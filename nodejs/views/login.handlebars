@@ -1,0 +1,12 @@
+<section class="login-container">
+    <form action="/login" method="post" class="box-shadow-basic">
+        <h3>Account Login</h3>
+         {{#if toastMessage}}
+            <p class="submit-error">{{toastMessage}}</p>
+        {{/if}}
+        <input required type="text" name="username" placeholder="username">
+        <input required type="password" name="password" placeholder="password">
+        <button type="submit" class="basic-btn">submit</button>
+        <a href="/signup">Sign Up</a>
+    </form>
+</section>

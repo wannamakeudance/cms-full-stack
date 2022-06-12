@@ -1,0 +1,39 @@
+<div class="container card flex-row align-center article-list">
+    <a href="/viewarticle?articleID={{this.ArticleID}}">
+        <img src="{{this.ArticleImagePath}}" class="cover-thumb" alt="cover">
+    </a>
+    <div class="flex-col align-start article-main">
+        <div class="flex-row align-center">
+            <button id="like" class="like-button" 
+                articleId="{{this.ArticleID}}">
+                {{#if this.isLiked}}
+                    ♥
+                {{else}}
+                    ♡
+                {{/if}}
+            </button>
+            <p id="like-count" class="like-count">
+                {{this.TotalLikes}}
+            </p>
+            <a href="/viewarticle?articleID={{this.ArticleID}}" class="article-title">
+                {{this.ArticleTitle}}
+            </a>
+        </div>
+        <div class="flex-row align-center article-info">
+            <p>{{this.CreatedDateTime}}</p>
+                    ｜
+                    
+            <p>
+                <a href="/accountcenter?username={{this.ArticleCreator}}" class="article-info">
+                {{this.ArticleCreator}}
+                </a>
+            </p>
+        </div>
+        <p class="align-center">
+            {{{this.ArticleContent}}}
+            <a href="/viewarticle?articleID={{this.ArticleID}}" class="read-more">
+                Read more
+            </a>
+        </p>
+    </div>
+</div>
