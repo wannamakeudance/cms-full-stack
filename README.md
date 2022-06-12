@@ -47,6 +47,7 @@ cs718-individual-java-final-project-wannamakeudance
 ```
 
 ## Start
+
 ### Initialize the nodejs parts
 #### 1. Open the current project and execute the following commands.
 
@@ -58,13 +59,13 @@ cs718-individual-java-final-project-wannamakeudance
 
 Delete the `./nodejs/project-database.db` file if it exists.
 
-Create database named "project-database.db" in `./nodejs/` directly.
+Create database named `project-database.db` in `./nodejs/` directly.
 
 Copy the SQL in `./nodejs/sql/project-database-init-script.sql`and execute them.
 
 Hint: remember to write to file at last and make the database effective.
 
-#### 3. Start server 
+#### 3. Start server for APIs
 
 > cd nodejs/
 >
@@ -72,11 +73,20 @@ Hint: remember to write to file at last and make the database effective.
 
 If you want to see the website of Blogging system, you can visit `http://localhost:3000/` in the browser.
 
-### Open the Admin Platform
+### Initialize the java part
+
+#### 1. Open the whole project in IntelliJ
+
+![structure](./nodejs/spec/structure.png)
+
+#### 2. Configure the project structure
+- JDK 17
+- Library import `./java/lib/**`(jackson libraries)
+#### 3. Open the Admin Platform
 
 Run `./java/Main.java` and you can see the admin UI.
 
-### The Admin User Information
+#### 4. The Admin User Information
 
 > username: user1
 > 
