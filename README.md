@@ -76,7 +76,7 @@ If you want to see the website of Blogging system, you can visit `http://localho
 
 Run `./java/Main.java` and you can see the admin UI.
 
-###The Admin User Information
+### The Admin User Information
 
 > username: user1
 > 
