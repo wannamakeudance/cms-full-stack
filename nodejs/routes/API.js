@@ -31,6 +31,7 @@ router.post('/api/login', async function (req, res) {
 
 router.post('/api/logout', async function (req, res) {
     try {
+        req.session.destroy();
         res.clearCookie("authToken");
         res.sendStatus(204);
     } catch (error) {
@@ -67,7 +68,7 @@ router.delete('/api/users/:id', async function (req, res) {
         const userDetail = await usersDao.getUserDetailsByUserName(req.session.username);
         const userrole = userDetail.UserRoleID;
 
-        if (userrole == "1") {
+        if (userrole === "1") {
             const deleteUserResult = await usersDao.deleteUser(userID);
             if (deleteUserResult.changes == 0) {
                 res.sendStatus(400);

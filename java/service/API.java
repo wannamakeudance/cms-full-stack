@@ -10,6 +10,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -88,7 +89,10 @@ public class API {
         HttpRequest request = builder.build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        List<Object> users = JSONUtils.toList(json, Object.class);
+        List<Object> users = new ArrayList<>();
+        if (!json.equals("Unauthorized")) {
+           users = JSONUtils.toList(json, Object.class);
+        }
         return users;
     }
 }

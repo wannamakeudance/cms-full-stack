@@ -9,5 +9,5 @@ public class Const {
     public static final String BaseUrl = "http://localhost:3000/api";
     public static final String loginFailError = "Login failed! Please check your name and password : )";
     public static final String logoutFailError = "Logout failed! Please try again : )";
-    public static final String loginTips = "Please login your username and password";
+    public static final String loginTips = "Please login the admins' username and password";
 }
