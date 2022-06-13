@@ -46,19 +46,19 @@ CREATE TABLE Avatar (
 
 --INSERTING into Avatar Entity to TEST.      @@@@@ Xiangzheng Jing ADD ALL THE AVATAR HERE. 
 INSERT INTO Avatar (AvatarID, AvatarName, AvatarPath)
-VALUES (1, "Orange" ,"https://www.w3schools.com/w3images/avatar6.png");
+VALUES (1, "Orange" ,"/images/avatars/avatar1.png");
 
 INSERT INTO Avatar (AvatarID, AvatarName, AvatarPath)
-VALUES (2, "Red" ,"https://www.w3schools.com/w3images/avatar5.png");
+VALUES (2, "Red" ,"/images/avatars/avatar2.png");
 
 INSERT INTO Avatar (AvatarID, AvatarName, AvatarPath)
-VALUES (3, "Green" ,"https://www.w3schools.com/w3images/avatar4.png");
+VALUES (3, "Green" ,"/images/avatars/avatar3.png");
 
 INSERT INTO Avatar (AvatarID, AvatarName, AvatarPath)
-VALUES (4, "Blue" ,"https://www.w3schools.com/w3images/avatar3.png");
+VALUES (4, "Blue" ,"/images/avatars/avatar4.png");
 
 INSERT INTO Avatar (AvatarID, AvatarName, AvatarPath)
-VALUES (5, "Default", "https://www.sibberhuuske.nl/wp-content/uploads/2016/10/default-avatar.png");
+VALUES (5, "Default", "/images/avatars/avatar5.png");
 
 
 
