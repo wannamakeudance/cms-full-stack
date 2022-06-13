@@ -77,7 +77,7 @@ If you want to see the website of Blogging system, you can visit `http://localho
 
 ### Initialize the java part
 
-#### 1. Open the whole project in IntelliJ
+#### 1. Open the project in IntelliJ like this:
 
 ![structure](./nodejs/spec/structure.png)
 
