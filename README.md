@@ -6,9 +6,9 @@
 cs718-individual-java-final-project-wannamakeudance
 ├─ .gitignore
 ├─ README.md
-├─ cs718-individual-java-final-project-wannamakeudance.iml
 |
 ├─ java                        // The Admin Platform made in Java Swing 
+│  ├─ java.iml                      
 │  ├─ lib
 │  │  ├─ jackson-annotations-2.12.3.jar
 │  │  ├─ jackson-core-2.12.3.jar
