@@ -44,7 +44,7 @@ public class API {
         params.put("password", password);
         String json = JSONUtils.toJSON(params);
         HttpRequest.Builder builder = HttpRequest.newBuilder()
-                .uri(URI.create(Const.BaseUrl + "/login"))
+                .uri(URI.create(Const.BaseUrl + "/api/login"))
                 .setHeader("Content-Type", "application/json")
                 .setHeader("Accept", "application/json")
                 .method("POST", HttpRequest.BodyPublishers.ofString(json));
@@ -56,7 +56,7 @@ public class API {
 
     public int logout() throws IOException, InterruptedException {
         HttpRequest.Builder builder = HttpRequest.newBuilder()
-                .uri(URI.create(Const.BaseUrl + "/logout"))
+                .uri(URI.create(Const.BaseUrl + "/api/logout"))
                 .setHeader("Content-Type", "application/json")
                 .setHeader("Accept", "application/json")
                 .method("GET", HttpRequest.BodyPublishers.noBody());
@@ -69,7 +69,7 @@ public class API {
     public int deleteUser(String username) throws IOException, InterruptedException {
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()
-                .uri(URI.create(Const.BaseUrl + "/users/" + username))
+                .uri(URI.create(Const.BaseUrl + "/api/users/" + username))
                 .setHeader("Content-Type", "application/json")
                 .setHeader("Accept", "application/json")
                 .method("DELETE", HttpRequest.BodyPublishers.noBody());
@@ -82,7 +82,7 @@ public class API {
     public List<Object> getUsersList() throws IOException, InterruptedException {
 
         HttpRequest.Builder builder = HttpRequest.newBuilder()
-                .uri(URI.create(url + "/users"))
+                .uri(URI.create(url + "/api/users"))
                 .setHeader("Accept", "application/json")
                 .method("GET", HttpRequest.BodyPublishers.noBody());
 

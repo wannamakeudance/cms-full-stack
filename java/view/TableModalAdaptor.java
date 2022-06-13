@@ -3,7 +3,11 @@ package view;
 import model.User;
 import util.Const;
 
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import java.awt.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 public class TableModalAdaptor extends AbstractTableModel {
@@ -52,6 +56,14 @@ public class TableModalAdaptor extends AbstractTableModel {
             case 6:
                 return row.getArticlesCreated();
             case 7:
+                try {
+                    ImageIcon imageIcon = new ImageIcon(new URL(Const.BaseUrl + row.getAvatarPath()));
+                    ImageIcon newImageIcon = new ImageIcon(imageIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
+                    return newImageIcon;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            case  8:
                 return row.getAvatarPath();
             default:
                 return "";
@@ -80,6 +92,11 @@ public class TableModalAdaptor extends AbstractTableModel {
             default:
                 break;
         }
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        return columnIndex == 7 ? ImageIcon.class : super.getColumnClass(columnIndex);
     }
 
     /**
