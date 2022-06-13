@@ -56,7 +56,7 @@ router.get('/api/users', async function (req, res) {
                 allUsers[i].AvatarPath = AvatarPath;
                 allUsers[i].ArticlesCreated = TOTAL;
             }
-            res.status(200).send(allUsers);
+            res.status(200).json(allUsers);
         } else {
             res.sendStatus(401);
         }
