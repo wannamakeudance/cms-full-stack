@@ -42,8 +42,9 @@ public class TableAdaptor extends JTable{
       jTableHeader.setFont(new Font("SansSerif", Font.BOLD, 12));
       jTableHeader.setForeground(Color.white);
       jTableHeader.setPreferredSize(new Dimension(1000, 40));
+
       // Set remove buttons in the table
-      jTable.getColumn(Const.removeText).setCellRenderer(new TableCellAdaptor());
+      jTable.getColumn(Const.removeText).setCellRenderer(new TableCellButtonAdaptor());
       this.addActionsToRows();
 
       // This is essential for showing titles

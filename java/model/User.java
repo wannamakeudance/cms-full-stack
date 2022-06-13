@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class User {
@@ -11,6 +12,7 @@ public class User {
     private int UserRoleID;
     private int AvatarID;
     private int ArticlesCreated;
+    private String AvatarPath;
     private String CreatedDateTime;
     private String ModifiedDateTime;
 
@@ -22,9 +24,10 @@ public class User {
         AboutMeDescription = (String) hashMap.get("AboutMeDescription");
         UserRoleID = (Integer) hashMap.get("UserRoleID");
         AvatarID = (Integer) hashMap.get("AvatarID");
-        ArticlesCreated = (Integer) hashMap.get("ArticlesCreated");;
-        CreatedDateTime = (String) hashMap.get("CreatedDateTime");;
-        ModifiedDateTime = (String) hashMap.get("ModifiedDateTime");;
+        ArticlesCreated = (Integer) hashMap.get("ArticlesCreated");
+        CreatedDateTime = (String) hashMap.get("CreatedDateTime");
+        ModifiedDateTime = (String) hashMap.get("ModifiedDateTime");
+        AvatarPath = (String) hashMap.get("AvatarPath");
     }
     public String getFullName() {
         return UserName;
@@ -48,6 +51,14 @@ public class User {
 
     public String getUserRole() {
         return UserRoleID == 1 ? "yes" : "no";
+    }
+
+    public int getArticlesCreated() {
+        return ArticlesCreated;
+    }
+
+    public String getAvatarPath () {
+        return AvatarPath;
     }
 
     public void setName(String name) {

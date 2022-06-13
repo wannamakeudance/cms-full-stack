@@ -59,7 +59,7 @@ public class API {
                 .uri(URI.create(Const.BaseUrl + "/logout"))
                 .setHeader("Content-Type", "application/json")
                 .setHeader("Accept", "application/json")
-                .method("POST", HttpRequest.BodyPublishers.noBody());
+                .method("GET", HttpRequest.BodyPublishers.noBody());
 
         HttpRequest request = builder.build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

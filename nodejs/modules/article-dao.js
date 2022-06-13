@@ -313,34 +313,14 @@ async function getLatestArticleByUserName (username){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// get the total count of articles created by the user
+async function getCountOfArticlesCreatedByUserName(username) {
+    const db = await dbPromise;
+    const result = await db.get (SQL `
+    SELECT COUNT(ArticleID) AS TOTAL FROM Article
+    WHERE ArticleCreator = ${username}`);
+    return result;
+}
 
 
 
@@ -381,5 +361,6 @@ module.exports = {
 
     //UserForSendingNotification:
     getLatestArticleByUserName,
+    getCountOfArticlesCreatedByUserName
 };
 

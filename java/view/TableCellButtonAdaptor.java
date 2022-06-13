@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
-public class TableCellAdaptor implements TableCellRenderer {
+public class TableCellButtonAdaptor implements TableCellRenderer {
     private static JButton jButton = new JButton(Const.removeText);
 
     @Override

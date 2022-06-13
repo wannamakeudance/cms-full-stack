@@ -15,7 +15,7 @@ public class TableModalAdaptor extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return columnIndex < (this.getColumnCount() - 1);
+        return false;
     }
 
     @Override
@@ -49,6 +49,10 @@ public class TableModalAdaptor extends AbstractTableModel {
                 return row.getAboutMeDescription();
             case 5:
                 return row.getUserRole();
+            case 6:
+                return row.getArticlesCreated();
+            case 7:
+                return row.getAvatarPath();
             default:
                 return "";
         }
