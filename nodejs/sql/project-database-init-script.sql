@@ -85,16 +85,16 @@ CREATE TABLE UserAccount (
 
 --CREATING dummy UserAccount for dummy Articles
 INSERT INTO UserAccount (UserName, FirstName, LastName, UserRoleID, AvatarID, AboutMeDescription, DateOfBirth, CreatedDateTime, ModifiedDateTime)
-VALUES ("user1", "Olivia", "Jing", 1, 1, "About Me", "2000-01-01", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+VALUES ("user1", "Olivia", "Jing", 1, 2, "About Me", "2000-01-01", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO UserAccount (UserName, FirstName, LastName, UserRoleID, AvatarID, AboutMeDescription, DateOfBirth, CreatedDateTime, ModifiedDateTime)
 VALUES ("user2", "Mike", "Wheeler", 2, 1, "Finn in Stranger Things", "2000-01-02", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO UserAccount (UserName, FirstName, LastName, UserRoleID, AvatarID, AboutMeDescription, DateOfBirth, CreatedDateTime, ModifiedDateTime)
-VALUES ("user3", "Ele", "Eleven", 2, 1, "Millie in Stranger Things", "2000-01-03", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+VALUES ("user3", "Ele", "Eleven", 2, 3, "Millie in Stranger Things", "2000-01-03", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO UserAccount (UserName, FirstName, LastName, UserRoleID, AvatarID, AboutMeDescription, DateOfBirth, CreatedDateTime, ModifiedDateTime)
-VALUES ("user4", "Will", "Byers", 2, 1, "Noah in Stranger Things", "2000-01-04", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+VALUES ("user4", "Will", "Byers", 2, 4, "Noah in Stranger Things", "2000-01-04", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO UserAccount (UserName, FirstName, LastName, UserRoleID, AvatarID, AboutMeDescription, DateOfBirth, CreatedDateTime, ModifiedDateTime)
 VALUES ("user5", "Dustin", "Henderson", 2, 1, "Gaten in Stranger Things", "2000-01-05", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

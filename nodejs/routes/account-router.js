@@ -124,10 +124,12 @@ router.post('/accountedit', async function(req, res) {
             lastname,
             birthday,
             introduce, 
-            avatar = 5
+            avatar = 5,
+            UserRoleID
         } = req.body;
         avatar = Number(avatar);
-        res.locals.createUserAccount = await usersDao.updateUserAccount(username, firstname, lastname, birthday, introduce, 2, avatar);
+        UserRoleID = Number(UserRoleID);
+        res.locals.createUserAccount = await usersDao.updateUserAccount(username, firstname, lastname, birthday, introduce, UserRoleID, avatar);
         res.redirect('/');
     } catch (error) {
         res.setToastMessage(JSON.stringify(error));
