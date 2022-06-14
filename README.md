@@ -86,6 +86,8 @@ If you want to see the website of Blogging system, you can visit `http://localho
 - JDK 17
 - Library import `./java/lib/**`(jackson libraries)
 
+![lib](./nodejs/spec/lib.png)
+
 #### 3. Open the Admin Platform
 
 Run `./java/src/Main.java` and you can see the admin UI.
