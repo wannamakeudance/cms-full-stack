@@ -49,7 +49,7 @@ public class User {
     }
 
     public String getUserRole() {
-        return UserRoleID == 1 ? "yes" : "no";
+        return UserRoleID == 1 ? "Yes" : "No";
     }
 
     public int getArticlesCreated() {
@@ -78,5 +78,17 @@ public class User {
 
     public void setAboutMeDescription(String aboutMeDescription) {
         AboutMeDescription = aboutMeDescription;
+    }
+
+    public void setArticlesCreated(int articlesCreated) {
+        ArticlesCreated = articlesCreated;
+    }
+
+    public void setUserRole(String type) {
+        UserRoleID = type.equals("Yes") ? 1: 0;
+    }
+
+    public void setAvatarPath(String path) {
+        AvatarPath = path;
     }
 }

@@ -74,21 +74,29 @@ public class TableModalAdaptor extends AbstractTableModel {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
         User row = _data.get(rowIndex);
+        String value = aValue.toString();
         switch (columnIndex) {
             case 0:
-                row.setName(aValue.toString());
+                row.setName(value);
                 break;
             case 1:
-                row.setFirstName(aValue.toString());
+                row.setFirstName(value);
                 break;
             case 2:
-                row.setLastName(aValue.toString());
+                row.setLastName(value);
                 break;
             case 3:
-                row.setDateOfBirth(aValue.toString());
+                row.setDateOfBirth(value);
                 break;
             case 4:
-                row.setAboutMeDescription(aValue.toString());
+                row.setAboutMeDescription(value);
+            case 5:
+                row.setUserRole(value);
+            case 6:
+                row.setArticlesCreated((Integer)aValue);
+                break;
+            case 8:
+                row.setAvatarPath(value);
             default:
                 break;
         }

@@ -6,6 +6,7 @@ import util.Const;
 import util.JSONUtils;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -35,6 +36,7 @@ public class TableAdaptor extends JTable{
       jTable.setModel(usersTableModal);
       jTable.setSelectionBackground(Color.gray);
 
+
       // Add styles to table header
       JTableHeader jTableHeader = jTable.getTableHeader();
       jTableHeader.setOpaque(false);
@@ -42,6 +44,14 @@ public class TableAdaptor extends JTable{
       jTableHeader.setFont(new Font("SansSerif", Font.BOLD, 12));
       jTableHeader.setForeground(Color.white);
       jTableHeader.setPreferredSize(new Dimension(Const.windowWidth, 40));
+
+      // center the texts in cells
+      DefaultTableCellRenderer jTableRender = (DefaultTableCellRenderer)
+              jTable.getDefaultRenderer(String.class);
+      jTableRender.setHorizontalAlignment(SwingConstants.CENTER);
+      DefaultTableCellRenderer jHeaderRenderer = (DefaultTableCellRenderer)
+              jTable.getTableHeader().getDefaultRenderer();
+      jHeaderRenderer.setHorizontalAlignment(JLabel.CENTER);
 
       // Set remove buttons in the table and customize styles of columns
       jTable.getColumn(Const.removeText).setCellRenderer(new TableCellAdaptor());
