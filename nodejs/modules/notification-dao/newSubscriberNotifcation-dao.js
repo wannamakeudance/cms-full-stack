@@ -13,7 +13,6 @@ const dbPromise = require("../database.js");
 */
 async function insertNewSubscriberNotification(username, notificationFrom, notificationMessage){
     const db = await dbPromise;
-    console.log(username, notificationFrom, notificationMessage)
     const result = await db.run(SQL `
     INSERT INTO UserNotification (UserName, NotificationTypeID, NotificationFrom, NotificationMessage)
     VALUES (${username}, 3, ${notificationFrom}, ${notificationMessage})`);

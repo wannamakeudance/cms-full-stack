@@ -1,10 +1,10 @@
-<div class="container card flex-row align-center article-list">
+<div class="article-list card flex">
     <a href="/viewarticle?articleID={{this.ArticleID}}">
-        <img src="{{this.ArticleImagePath}}" class="cover-thumb" alt="cover">
+        <img src="{{this.ArticleImagePath}}" class="cover-thumb max-w-xs h-36 mr-10" alt="cover">
     </a>
-    <div class="flex-col align-start article-main">
-        <div class="flex-row align-center">
-            <button id="like" class="like-button" 
+    <div class="align-start article-main">
+        <div class="flex items-center">
+            <button id="like" class="like-button text-red-500 text-3xl hover:opacity-80" 
                 articleId="{{this.ArticleID}}">
                 {{#if this.isLiked}}
                     ♥
@@ -12,26 +12,26 @@
                     ♡
                 {{/if}}
             </button>
-            <p id="like-count" class="like-count">
+            <p id="like-count" class="like-count text-base text-gray-500 ml-1">
                 {{this.TotalLikes}}
             </p>
-            <a href="/viewarticle?articleID={{this.ArticleID}}" class="article-title">
+            <a href="/viewarticle?articleID={{this.ArticleID}}" class="article-title text-xl font-semibold ml-6 hover:opacity-60">
                 {{this.ArticleTitle}}
             </a>
         </div>
-        <div class="flex-row align-center article-info">
+        <div class="flex mt-1 text-gray-400 article-info">
             <p>{{this.CreatedDateTime}}</p>
                     ｜
                     
-            <p>
-                <a href="/accountcenter?username={{this.ArticleCreator}}" class="article-info">
+            
+            <a href="/accountcenter?username={{this.ArticleCreator}}" 
+                class="article-info hover:text-gray-800">
                 {{this.ArticleCreator}}
-                </a>
-            </p>
+            </a>
         </div>
-        <p class="align-center">
+        <p class="mt-5 text-zinc-400">
             {{{this.ArticleContent}}}
-            <a href="/viewarticle?articleID={{this.ArticleID}}" class="read-more">
+            <a href="/viewarticle?articleID={{this.ArticleID}}" class="read-more text-gray-500 hover:text-gray-800">
                 Read more
             </a>
         </p>

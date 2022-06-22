@@ -1,47 +1,8 @@
 {{> header}}
-<div id="profile-container">
-
-    <div id="user">
-        <div id="avatar">
-            <img src="{{profileavatar}}" alt="" width="100px"><br>
-            <span class="user-name">{{profileusername}}</span>
-            <span>{{followingstatus}}</span>
-        </div>
-        <div id="subscribebutton">
-            
-            <script>
-                 if(document.querySelector(".user-name").textContent!=document.querySelector("#theusername").textContent){
-                     document.querySelector("#subscribebutton").innerHTML+=`<a href="/accountcenter?username={{profileusername}}&status=following"><button class="button button-mini button-3d" onclick="clickfollowbutton()">Follow</button></a>`
-                     document.querySelector("#subscribebutton").innerHTML+=`<a href="/accountcenter?username={{profileusername}}&status=unfollow"><button class="button button-mini button-3d" onclick="clickfollowbutton()">UnFollow</button></a>`
-                 }
-             </script>
-        </div>
-        <div>
-            <a href="/following?username={{profileusername}}">Following</a><span class="following-number"> {{totalUsersSubscribedTo}}</span>
-            <a href="/followers?username={{profileusername}}">Followers</a><span class="followers-number"> {{totalSubscribers}}</span>
-        </div>
-        <div id="introduction">
-            <h3>Introduction</h3>
-            <p>{{introduction}}</p>
-        </div>
-        <div id="birthday">
-            <h3>Birthday</h3>
-            <p>{{birthday}}</p>
-        </div>
-        {{#if isCurrentUser}}
-        <div class="MyDetails">
-             <h3>My Details</h3>
-        </div>
-        <div id="Edit-profile">
-            <a href="/accountedit">Edit Profile</a>
-        </div>
-        <div id="Analystic-Center">
-            <a href="/analytics?username={{profileusername}}">Analytics</a>
-        </div>
-        {{/if}}
-    </div>
-    <div id="favorite-articles">
-        <h4>My articles</h4>
+<div class="flex mt-36 min-h-screen"> 
+    {{> profile-sidebar}}
+    <div id="favorite-articles" class="flex-1 ml-10 shadow-lg">
+        <h4 class="text-2xl text-teal-600 mx-14 my-10 font-bold underline underline-offset-2">My Articles</h4>
         {{> article-list}}
     </div>
 </div>

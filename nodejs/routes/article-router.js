@@ -29,6 +29,19 @@ router.get('/newarticle', async function (req, res) {
     res.render("newarticle");
 });
 
+function commentsHandler(data, username, myarticle) {
+    for (let i = 0; i < data.length; i++) {
+        let cur = data[i];
+        cur.myarticle = myarticle;
+        if (cur.CommentedByID == username) {
+            cur.mycomment = 1;
+        }
+        if (cur.children) {
+            return commentsHandler(cur.children, username, myarticle);
+        }
+    }
+    return data;
+}
 /**
  * render the view article page
  */
@@ -47,66 +60,23 @@ router.get('/viewarticle', async function (req, res) {
         // get comments by articleID
         const comment = await articleCommentDao.getArticleCommentsByArticleID(articleID);
         if (comment) {
-            var commentsToShow = []
-
             // reverse the array so the latest commentID the first
             var commentsInOrder = [];
             var length = comment.children.length;
             for (var i = length - 1; i >= 0; i--) {
                 commentsInOrder.push(comment.children[i]);
             }
-
-            // create commentsToShow array
-            commentsInOrder.forEach(e => {
-                if (e.children) {
-                    e[`layer1`] = 1;
-                    if (e.CommentedByID == username) {
-                        e[`mycomment`] = 1;
-                    }
-                    commentsToShow.push(e);
-                    e.children.forEach(el => {
-                        if (el.children) {
-                            el[`layer2`] = 1;
-                            if (el.CommentedByID == username) {
-                                el[`mycomment`] = 1;
-                            }
-                            commentsToShow.push(el);
-                            el.children.forEach(element => {
-                                element[`layer3`] = 1;
-                                if (element.CommentedByID == username) {
-                                    element[`mycomment`] = 1;
-                                }
-                                commentsToShow.push(element);
-                            });
-                        } else {
-                            el[`layer2`] = 1;
-                            if (el.CommentedByID == username) {
-                                el[`mycomment`] = 1;
-                            }
-                            commentsToShow.push(el);
-
-                        }
-                    });
-                } else {
-                    e[`layer1`] = 1;
-                    if (e.CommentedByID == username) {
-                        e[`mycomment`] = 1;
-                    }
-                    commentsToShow.push(e);
-                }
-            });
+            // show edit/delete option if it's created by current user
+            const myarticle = article.ArticleCreator == username;
+            res.locals.myarticle = myarticle;
+            commentsHandler(commentsInOrder, username, myarticle);
+            console.log(JSON.stringify(commentsInOrder))
         }
-        res.locals.commentsToShow = commentsToShow;
-
-        // show edit/delete option if it's created by current user
-        const author = article.ArticleCreator;
-        if (username == author) {
-            res.locals.myarticle = 1;
-        }
+        res.locals.commentsToShow = commentsInOrder;        
         res.locals.articleID = articleID;
         res.locals.content = article.ArticleContent;
         res.locals.authorAvator = article.AvatarPath;
-        res.locals.author = author;
+        res.locals.author = article.ArticleCreator;
         res.locals.date = article.CreatedDateTime;
         res.locals.coverImagePath = article.ArticleImagePath;
 

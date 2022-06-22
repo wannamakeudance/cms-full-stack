@@ -1,17 +1,17 @@
-window.addEventListener("load", async function () {
+window.addEventListener('load', async function () {
 
     getchart();
 
-
     async function getchart() {
-        const response = await fetch("./getchartinformation");
+        const response = await fetch('/getchartinformation');
         const chartinformation = await response.json();
         
             var xValues = new Array();
             var yValues = new Array();
             for (let i = 0; i < chartinformation.length; i++) {
-                xValues[i] = chartinformation[i].DailyDate;
-                yValues[i] = chartinformation[i].TotalComments;
+                const {DailyDate, TotalComments} = chartinformation[i];
+                xValues[i] = DailyDate;
+                yValues[i] = TotalComments;
             }
             new Chart("myChart", {
                 type: "bar",
@@ -35,8 +35,6 @@ window.addEventListener("load", async function () {
                    
                 }
             });
-        
-
     }
 
 });

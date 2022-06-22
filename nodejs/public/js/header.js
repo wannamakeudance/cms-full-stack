@@ -1,12 +1,17 @@
 
-export function deleteAccount() {
+window.addEventListener('load', async function() {
+    deleteAccount();
+    await notificationHandler();
+});
+
+function deleteAccount() {
     // delete user account
     const deleteButton = document.querySelector('.delete-account');
     deleteButton && deleteButton.addEventListener('click', async function() {
         const modal = document.querySelector('#deleteAccountModal');
-        modal.classList.add('show');
+        modal.classList.remove('hidden');
         modal.querySelector('.cancel').addEventListener('click', function() {
-            modal.classList.remove('show');
+            modal.classList.add('hidden');
         });
         modal.querySelector('.ok').addEventListener('click', async function() {
             let response = await fetch('/accountdelete', {
@@ -20,7 +25,7 @@ export function deleteAccount() {
     });
 }
 
-export async function notificationHandler() {
+async function notificationHandler() {
     
     let response = await fetch('/notificationslist');
     
@@ -30,16 +35,16 @@ export async function notificationHandler() {
         if (notificationslist.length) {
             msgContainer.innerHTML = '';
         } else {
-            msgContainer.innerHTML = '<li style="justify-content:center;">empty message.</li>';
+            msgContainer.innerHTML = '<li class="text-center w-36 p-2">empty message.</li>';
             return;
         }
         const count = document.querySelector('.messages-count');
 
         if (total > 0) {
             count.innerHTML = total;
-            count.classList.add('show');
+            count.classList.remove('hidden');
         } else {
-            count.classList.remove('show');
+            count.classList.add('hidden');
         }
 
         for (let i = 0; i < notificationslist.length; i++) {
@@ -60,19 +65,19 @@ export async function notificationHandler() {
                 : `/accountcenter?username=${NotificationFrom}`;
 
             msgContainer.innerHTML += `
-            <li class="${isNotificationSeen === 'T' ? 'read' : ''}"
+            <li class="${isNotificationSeen === 'T' ? 'bg-gray-100' : ''}"
                 notificationTypeID="${NotificationTypeID}"
                 articleID="${NewArticleID}"
                 notificationFrom="${NotificationFrom}">
-                <a href="${href}">
-                    <img src="${AvatarPath}">
-                    <div>
-                        ${isNotificationSeen === 'T' ? '<p>Been read</p>' : ''}
-                        <p class="title">
+                <a href="${href}" class="border-b-2 flex p-4 hover:bg-gray-200 items-center">
+                    <img src="${AvatarPath}" class="w-20 h-16 mr-10">
+                    <div class="w-60">
+                        ${isNotificationSeen === 'T' ? '<p class="text-xs text-gray-500">Been read</p>' : ''}
+                        <p class="text-sm font-medium">
                             ${NotificationMessage}
                         </p>
-                        <p>
-                            ${NotificationSentDateTime} ${NotificationFrom}
+                        <p class="text-xs text-zinc-700 mt-2 align-middle">
+                            ${NotificationSentDateTime} <span class="text-zinc-500 text-sm ml-2 font-bold">${NotificationFrom}</span>
                         </p>
                     </div>
                 </a>

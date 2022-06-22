@@ -1,24 +1,69 @@
-<section class="login-container sign-up-container">
-    <form action="/signup" method="post" id="accountForm" class="sign-up box-shadow-basic">
-        <h3>Account Sign Up</h3>
+<section class="login-container sign-up-container h-screen bg-[url('/images/login.jpeg')] overflow-auto">
+    <form action="/signup" method="post" id="accountForm" 
+        class="sign-up box-shadow-basic bg-white w-3/5 mx-auto flex flex-col px-20">
+        <h3 class="text-center text-2xl font-bold mt-10 text-gray-500">Account Sign Up</h3>
         {{> form-error-message}}
-        <input required type="text" name="username" placeholder="enter a username">
-        <input required type="text" name="firstname" placeholder="enter your firstname">
-        <input required type="text" name="lastname" placeholder="enter your lastname">
-        <input required type="password" name="password" placeholder="enter a password">
-        <input required type="password" name="password" placeholder="enter the password again">
-        <label>Birthday</label>
-        <input required type="date" name="birthday" placeholder="enter your birthday">
-        <input required type="text" name="introduce" placeholder="enter your introduction">
-        <label>Choose Your Avatar </label>
-        <section class="avatars-list">
-            {{#each avatarlist}}
-            <label class="avatars">
-                <input type="radio" name="avatar" value="{{this.AvatarID}}"/>
-                <img src="{{this.AvatarPath}}"/>
-            </label>
-            {{/each}}     
-        </section>
-        <button type="submit" class="basic-btn">submit</button>
+        <input required type="text" name="username" placeholder="enter a username"
+        class="mt-5
+            block
+            w-5/6
+            mx-auto
+            px-0.5
+            border-0 border-b-2 border-gray-200
+            focus:ring-0 focus:border-black
+            leading-10">
+        <input required type="text" name="firstname" placeholder="enter your firstname"
+        class="mt-5
+            block
+            w-5/6
+            mx-auto
+            px-0.5
+            border-0 border-b-2 border-gray-200
+            focus:ring-0 focus:border-black
+            leading-10">
+        <input required type="text" name="lastname" placeholder="enter your lastname"
+        class="mt-5
+            block
+            w-5/6
+            mx-auto
+            px-0.5
+            border-0 border-b-2 border-gray-200
+            focus:ring-0 focus:border-black
+            leading-10">
+        <input required type="password" name="password" placeholder="enter a password" class="mt-5
+            block
+            w-5/6
+            mx-auto
+            px-0.5
+            border-0 border-b-2 border-gray-200
+            focus:ring-0 focus:border-black
+            leading-10">
+        <input required type="password" name="password" placeholder="enter the password again" class="mt-5
+            block
+            w-5/6
+            mx-auto
+            px-0.5
+            border-0 border-b-2 border-gray-200
+            focus:ring-0 focus:border-black
+            leading-10">
+        <label class="mt-5 ml-14 text-gray-500 font-bold">Birthday</label>
+        <input required type="date" name="birthday" placeholder="enter your birthday" class="mt-5
+            block
+            w-5/6
+            mx-auto
+            px-0.5
+            border-0 border-b-2 border-gray-200
+            focus:ring-0 focus:border-black
+            leading-10">
+        <input required type="text" name="introduce" placeholder="enter your introduction" class="mt-5
+            block
+            w-5/6
+            mx-auto
+            px-0.5
+            border-0 border-b-2 border-gray-200
+            focus:ring-0 focus:border-black
+            leading-10">
+        {{> avatars}}
+        <button type="submit" class="basic-btn my-6">submit</button>
     </form>
 </section>

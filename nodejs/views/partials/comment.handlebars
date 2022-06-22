@@ -1,0 +1,64 @@
+<li class="shadow-lg">
+    <div class="flex px-10 pt-10">
+        <img src="{{this.AvatarPath}}" class="avatar rounded-full w-10 mr-6">
+        <div class="text-sm text-gray-400">
+            <a href="#">{{this.CommentedByID}}</a>
+            <p class="comment-time"> {{this.CreatedDateTime}}</p>
+        </div>
+    </div>
+    <div class="flex justify-between px-6 pb-5" id="outerDiv-{{this.CommentID}}">
+        
+        {{#if this.mycomment}}
+        
+        <blockquote class="pl-20" id="commentID-{{this.CommentID}}">
+            {{this.CommentContext}}
+        </blockquote>
+        <div class="text-white text-xs flex" id="innerDiv-{{this.CommentID}}">
+            <button class="basic-btn bg-teal-500 mr-6 w-8 h-8 flex justify-center"
+                onClick="buttonClicked(event, {{../articleID}})"
+                id="editButton-{{this.CommentID}}">
+                EDIT
+            </button>
+            <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
+                method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
+                <input type="submit" name="delete" value="DELETE"
+                    class="basic-btn bg-red-600 w-8 h-8 flex justify-center" 
+                />
+            </form>
+        </div>
+
+        {{else if myarticle}}
+
+        <blockquote class="" id="commentID-{{this.CommentID}}">
+            {{this.CommentContext}}
+        </blockquote>
+        <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
+            method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
+            <input type="submit" name="delete" value="Delete"
+                class="basic-btn bg-red-600 w-8 h-8 flex justify-center"
+            />
+        </form>
+
+        {{else}}
+
+        <blockquote class="not-my-comment">
+            {{this.CommentContext}}
+        </blockquote>
+
+        {{/if}}
+    </div>
+    <form action="/newreply?articleID={{ArticleID}}&replyToID={{CommentID}}" method="post"
+        class="flex items-center justify-end pb-5">
+        <input type="text" name="replyContent" id="replyContent" 
+            class="w-3/5
+                block
+                rounded-sm
+                border-b-2 border-gray-300
+                focus:ring-0 focus:border-gray-400" 
+            placeholder="1 Add a reply...">
+        <button type="submit"  
+            class="w-8 h-8 ml-5 mr-5 text-xs flex justify-center items-center basic-btn">
+            POST
+        </button>
+    </form>
+</li>

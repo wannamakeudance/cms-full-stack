@@ -1,0 +1,41 @@
+ <div class="px-10 shadow-2xl shadow-gray-600 ml-10">
+    <div class="avatar text-center mt-10">
+        <img src="{{profileavatar}}" class="w-20 h-20 rounded-full mx-auto mb-2">
+        <span class="user-name font-bold text-xl block mb-3">{{profileusername}}</span>
+        <span>{{followingstatus}}</span>
+    </div>
+    <div>
+        
+        <script>
+                if(document.querySelector(".user-name").textContent!=document.querySelector("#theusername").textContent){
+                    document.querySelector("#subscribebutton").innerHTML+=`<a href="/accountcenter?username={{profileusername}}&status=following"><button class="button button-mini button-3d" onclick="clickfollowbutton()">Follow</button></a>`
+                    document.querySelector("#subscribebutton").innerHTML+=`<a href="/accountcenter?username={{profileusername}}&status=unfollow"><button class="button button-mini button-3d" onclick="clickfollowbutton()">UnFollow</button></a>`
+                }
+        </script>
+    </div>
+    <div class="subscribe-buttons text-center">
+        <a class="text-teal-500 text-lg hover:text-teal-700 font-bold" href="/following?username={{profileusername}}">Following</a>
+        <span class="following-number mr-5"> {{totalUsersSubscribedTo}}</span>
+        <a class="text-teal-500 text-lg hover:text-teal-700 font-bold" href="/followers?username={{profileusername}}">Followers</a>
+        <span class="followers-number"> {{totalSubscribers}}</span>
+    </div>
+    <div class="introduction mt-4">
+        <h3 class="text-xl font-bold text-zinc-500">Introduction</h3>
+        <p class="text-gray-400 leading-10">{{introduction}}</p>
+    </div>
+    <div class="birthday mt-4">
+        <h3 class="text-xl font-bold text-zinc-500">Birthday</h3>
+        <p class="text-gray-400 leading-10">{{birthday}}</p>
+    </div>
+    {{#if isCurrentUser}}
+        <div class="my-details mt-4">
+            <h3 class="text-xl font-bold text-zinc-500 leading-10">My Details</h3>
+        </div>
+        <div class="edit-profile">
+            <a class="text-teal-500 leading-10 hover:text-teal-700 underline-offset-8 underline" href="/accountedit">Edit Profile</a>
+        </div>
+        <div class="analystic-center">
+            <a class="text-teal-500 leading-10 hover:text-teal-700 underline-offset-8 underline" href="/analytics?username={{profileusername}}">Analytics</a>
+        </div>
+    {{/if}}
+</div>

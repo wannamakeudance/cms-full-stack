@@ -1,56 +1,83 @@
-<nav class="header-nav-container">
-    <h3 class="navbar-brand">
+<nav class="shadow-lg opacity-90 fixed w-full top-0 bg-stone-900 text-white flex items-center justify-between p-5 z-50">
+    <h3 class="flex items-center header-nav-container ">
         <img src="/images/logo.png" width="60">
-        <span>The Blog of Nature Protection</span> 
+        <a  href="/" class="font-bold text-xl hover:text-white">The Blog of Nature Protection</a> 
     </h3>
-    <div class="user-info-container">
-        <a href="/">Home</a>
+    <div class="flex items-center">
+        <a href="/" class="mr-10 hover:text-white">Home</a>
         {{!-- has login --}}
         {{#if isLogin}}
-        <section class="messages-container">
-            <div class="messages-imager">
+        <section class="messages-container relative mr-10">
+            <div class="messages-imager p-2">
               <img src="/images/notification.jpg" width="30" height="30" id="messages-btn">
-              <span class="messages-count"></span>
+              <span 
+                class="text-sm messages-count hidden rounded-full bg-red-600 w-6 h-6 text-center middle absolute top-0 right-0">
+
+              </span>
             </div>
-            <ul class="messages-list list-unstyled">
+            <ul class="messages-list shadow-lg hidden absolute right-0 z-50 text-sm focus:outline-none origin-top-right bg-slate-50 text-gray-700 mt--4">
                 
             </ul>
         </section>
-        <section class="avatar-container" id="avatar">
-            <img src="{{avatar}}">
-            <ul class="user-info-list">
-                <li><a href="/accountcenter?username={{username}}" id="theusername">{{username}}</a></li>
-                <li><a href="/newarticle">New Article</a></li>
-                <li><a href="/accountedit">Edit Account</a> </li>
-                <li class="delete-account"><a>Delete Account</a> </li>
-                <li><a href="/passwordedit">Edit Password</a> </li>
-                <li><a href="/logout">Logout</a></li>
+        <section class="relative avatar-container mr-10" id="avatar">
+            <img src="{{avatar}}" class="w-12 h-12 rounded-full">
+            <ul class="hidden user-info-list z-50 text-sm focus:outline-none origin-top-right absolute bg-slate-50 text-gray-700 shadow-lg right-0 mt--4 text-center">
+                <li>
+                  <a href="/accountcenter?username={{username}}" id="theusername"
+                  class="block p-2 hover:bg-teal-500 hover:text-white">{{username}}</a>
+                </li>
+                <li><a href="/newarticle" class="block p-2 hover:bg-teal-500 hover:text-white">New Article</a></li>
+                <li><a href="/accountedit" class="block p-2 w-40 hover:bg-teal-500 hover:text-white">Edit Account</a> </li>
+                <li class="delete-account"><a  class="block p-2 hover:bg-teal-500 hover:text-white cursor-pointer">Delete Account</a> </li>
+                <li><a href="/passwordedit" class="block p-2 hover:bg-teal-500 hover:text-white">Edit Password</a> </li>
+                <li><a href="/logout" class="block p-2 hover:bg-teal-500 hover:text-white">Logout</a></li>
             </ul>
         </section>
         {{else}}
-        {{!-- not login --}}
-        <a href="/login">Login</a>
-        <a href="/signup">Sign Up</a>
+          {{!-- not login --}}
+          <a href="/login" class="mr-10 hover:text-white">Login</a>
+          <a href="/signup" class="mr-10 hover:text-white">Sign Up</a>
         {{/if}}
     </div>
     <input type="hidden" id="hidden-username" value="{{username}}">
 </nav>
 <!-- Modal -->
-<section class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-            Are you sure to delete your own account?
-        </h5>
-      </div>
-      <div class="modal-body">
-           Meanwhile, your articles, comments and likes will all be removed.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary cancel" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary ok">Yes</button>
+<section class="relative z-10 hidden" id="deleteAccountModal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+  <div class="fixed z-10 inset-0 overflow-y-auto">
+    <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+      <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+              <!-- Heroicon name: outline/exclamation -->
+              <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+              <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Deactivate account</h3>
+              <div class="mt-2">
+                <p class="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <button type="button" class="ok w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+            Deactivate
+          </button>
+          <button type="button" class="cancel mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+
+<link rel="stylesheet" href="./css/header.css">
+<script src="./js/header.js"></script>

@@ -1,0 +1,9 @@
+<label class="mt-5 ml-14 text-gray-500 font-bold">Choose Your Avatar </label>
+<section class="avatars-list flex ml-14 m-4">
+    {{#each avatarlist}}
+    <label class="avatars">
+        <input type="radio" name="avatar" value="{{this.AvatarID}}" class="hidden"/>
+        <img src="{{this.AvatarPath}}" class="w-20 rounded-full mr-5"/>
+    </label>
+    {{/each}}     
+</section>

@@ -117,7 +117,6 @@ router.get('/analytics', async function (req, res) {
         res.locals.totalComments = 0;
     }
     else {
-        console.log(totalComments);
         res.locals.totalComments = totalComments.TotalComments
     };
 
@@ -131,7 +130,6 @@ router.get('/analytics', async function (req, res) {
         res.locals.totalLikes = 0;
     }
     else {
-        console.log(totalLikes);
         res.locals.totalLikes = totalLikes.TotalLikes
     };
     const top3article=await analyticsDao.getTop3PopularArticlesByUsername(username);
@@ -140,7 +138,8 @@ router.get('/analytics', async function (req, res) {
 
     //getting total number of comments this.user(author) has gotten per day. (STATUS == UNKNOWN - REQUIRES TESTING!)
     const totalDailyComments = await analyticsDao.getTotalDailyCommentsByUsername(username); 
-    //res.locals.totalComments = totalDailyComments;  
+
+    res.locals.isCurrentUser = req.session.username === username;
 
     res.render("analytics");
 });
@@ -154,67 +153,40 @@ router.get('/getchartinformation',async function(req,res){
 });
 
 
-
-
 router.get('/following', async function (req, res) {
+    await handleFollow(req, res);
+});
+
+router.get('/followers', async function(req, res) {
+    await handleFollow(req, res);
+});
+
+async function handleFollow(req, res) {
     const username = req.query.username;
     const userDetail = await usersDao.getUserDetailsByUserName(username);
     const avatar = await avatarDao.getAvatarPath(userDetail.AvatarID);
-
+    const title = req.path.substring(1);
     res.locals.profileavatar = avatar.AvatarPath;
     res.locals.profileusername = userDetail.UserName;
     res.locals.introduction = userDetail.AboutMeDescription;
     res.locals.birthday = userDetail.DateOfBirth;
-    res.locals.title = "Following";
+    res.locals.title = title;
 
-    //getting total users this.user has subscribed to. [Basically: Following]  (STATUS == WORKS!!)
     const totalUsersSubscribedTo = await followingDao.getTotalSubscribedToByUsername(username);
     res.locals.totalUsersSubscribedTo = totalUsersSubscribedTo.TotalSubscribedTo;
 
-    //getting total subscribers this.user has [Basically: Followers]  (STATUS == WORKS!!)
     const totalSubscribers = await followersDao.getTotalSubscribersByUsername(username);
     res.locals.totalSubscribers = totalSubscribers.TotalSubscribers;
-
-
-    //getting ALL users (attributes: UserName, AboutMeDescription) this.user has subscribed to. [Basically: Following] (STATUS == WORKS!)
-    const allUsersSubscribedTo = await followingDao.getAllSubscribedToByUsername(username);
-    res.locals.allUsersSubscribedTo = allUsersSubscribedTo;
-    //^ Use this in handlebar and use {{#each allUsersSubscribedTo}}
     res.locals.isCurrentUser = req.session.username === username;
-    res.render("following");
-});
 
-
-
-
-router.get('/followers', async function (req, res) {
-    const username = req.query.username;
-    const userDetail = await usersDao.getUserDetailsByUserName(username);
-    const avatar = await avatarDao.getAvatarPath(userDetail.AvatarID);
-
-    res.locals.profileavatar = avatar.AvatarPath;
-    res.locals.profileusername = userDetail.UserName;
-    res.locals.introduction = userDetail.AboutMeDescription;
-    res.locals.birthday = userDetail.DateOfBirth;
-    res.locals.title = "Followers";
-
-    //getting total users this.user has subscribed to. [Basically: Following]  (STATUS == WORKS!!)
-    const totalUsersSubscribedTo = await followingDao.getTotalSubscribedToByUsername(username);
-    res.locals.totalUsersSubscribedTo = totalUsersSubscribedTo.TotalSubscribedTo;
-
-    //getting total subscribers this.user has [Basically: Followers]  (STATUS == WORKS!!)
-    const totalSubscribers = await followersDao.getTotalSubscribersByUsername(username);
-    res.locals.totalSubscribers = totalSubscribers.TotalSubscribers;
-
-    //getting ALL subscribers of  (attributes: UserName, AboutMeDescription) this.user [Basically: Followers] (STATUS == WORKS!)
-    const allSubscribers = await followersDao.getAllSubscribers(username);
-    res.locals.allSubscribers = allSubscribers
-    //^ Use this in handlebar and use {{#each allSubscribers}}
-    res.locals.isCurrentUser = req.session.username === username;
-    res.render("followers");
-});
-
-
-
+    let followUsers = [];
+    if (title === 'following') {
+        followUsers = await followingDao.getAllSubscribedToByUsername(username);
+    } else {
+        followUsers = await followersDao.getAllSubscribers(username);
+    }
+    res.locals.allUsersSubscribedTo = followUsers;
+    res.render('follow');
+}
 
 module.exports = router;

@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .card {
+      background-color: theme('colors.white');
+      border-radius: theme('borderRadius.lg');
+      padding: theme('spacing.6');
+      box-shadow: theme('dropShadow.xl');
+      display: flex;
+      align-items: center;
+      margin: theme('margin.10');
+    }
+    .sort-option {
+        border: 2px solid rgb(20, 184, 166);
+        color: rgb(20, 184, 166);   
+        padding: theme('spacing.2');
+        border-radius: 10px;
+        margin-right: 12px;
+    }
+    .sort-selected {
+        background: rgb(20, 184, 166); 
+        color: theme('colors.white');
+    }
+    .basic-btn {
+        background: black;
+        padding: 10px 50px;
+        color: white;
+    }
+    .basic-btn:hover {
+        opacity: .8;
+    }
+    a {
+        color: rgb(20, 184, 166); 
+    }
+    a:hover {
+        color: #0f172a;
+    }
+
+    #comment li,
+    #comment ul {
+        padding-left: 50px;
+    }
+}

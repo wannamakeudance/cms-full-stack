@@ -1,7 +1,8 @@
 <section class="article-list-container">
-    <div class="flex-row align-center articles-filter">
-        Sorting by:
-        <button class="sort-option-selected sort-option" id="sort-new">Newest</button>
+    <div class="flex items-center ml-14 articles-filter">
+        <span class="font-bold text-2xl text-zinc-500">Sorting by:</span>
+        <button class="sort-option sort-selected ml-10" 
+            id="sort-new">Newest</button>
         <button class="sort-option" id="sort-old">Oldest</button>
         {{#if showUserName}}
         <button class="sort-option" id="sort-username">Username</button>

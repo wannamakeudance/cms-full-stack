@@ -10,17 +10,9 @@
     {{/if}}
     <script src="https://cdn.tiny.cloud/1/5sem5oslqomr37o6q1s31xlp97lyutcbbeh75dzhxawle0ct/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
-    <link rel="stylesheet" href="/css/user.css">
-    <link rel="stylesheet" href="/css/header.css"> 
-    <link rel="stylesheet" href="/css/profile.css">
-    <link rel="stylesheet" href="/css/analysis.css"><link rel="stylesheet" href="/css/following.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="./css/site.css" type="text/css">
-    <link rel="stylesheet" href="./css/utils.css" type="text/css">
-    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="./css/style.css" type="text/css">
-    <link rel="stylesheet" href="./css/article.css" type="text/css">
+    <link rel="stylesheet" href="./css/output.css">
 </head>
 
 <body>
@@ -29,13 +21,11 @@
     <script type="module">
         import {renderSignup} from '/js/account.js';
         import {articlesFilter, likeArtileHandler} from '/js/articles-list.js';
-        import {deleteAccount, notificationHandler} from '/js/header.js';
         window.onload = function () {
             renderSignup();
             articlesFilter();
             likeArtileHandler();
-            deleteAccount();
-            notificationHandler();
+           
         };
     </script>
 </body>

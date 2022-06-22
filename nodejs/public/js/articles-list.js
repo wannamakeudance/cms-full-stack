@@ -15,10 +15,11 @@
             
             // 1. the current button will show chosen status
             filter.querySelectorAll('button').forEach(ele =>{
-                ele.classList.remove('sort-option-selected');
+               ele.classList.remove('sort-selected');
             });
 
-            this.classList.add('sort-option-selected');
+            this.classList.add('sort-selected');
+
             
             // 2. the brower will send different request.
             let query = `type=${this.id}`;        
@@ -38,31 +39,31 @@
             for(let i = 0; i < res.data.length; i++) {
                 const item = res.data[i];
                 container.innerHTML += `
-                <div class="container card flex-row align-center article-list">
+                <div class="container card align-center article-list">
                     <a href="/viewarticle?articleID=${item.ArticleID}">
-                        <img src="${item.ArticleImagePath}" class="cover-thumb" alt="cover">
+                        <img src="${item.ArticleImagePath}" class="cover-thumb max-w-xs h-36 mr-10" alt="cover">
                     </a>
-                    <div class="flex-col align-start article-main">
-                        <div class="flex-row align-center">
-                            <button id="like" class="like-button" articleid="${item.ArticleID}">
+                    <div class="article-main">
+                        <div class="flex items-center">
+                            <button id="like" class="like-button text-red-500 text-3xl hover:opacity-80"  articleid="${item.ArticleID}">
                                 ${item.isLiked? "♥" : "♡"}
                             </button>
-                            <p id="like-count" class="like-count">
+                            <p id="like-count" class="like-count text-base text-gray-500 ml-1">
                                 ${item.TotalLikes}
                             </p>
-                            <a href="/viewarticle?articleID=${item.ArticleID}" class="article-title">
+                            <a href="/viewarticle?articleID=${item.ArticleID}" class="article-title text-xl font-semibold ml-6 hover:opacity-60">
                                 ${item.ArticleTitle}
                             </a>
                         </div>
-                        <div class="flex-row align-center article-info">
+                        <div class="flex mt-1 text-gray-400  article-info">
                             <p>${item.CreatedDateTime}</p>
                                     ｜
                                     
-                            <p><a href="/accountcenter?username=${item.ArticleCreator}" class="article-info">${item.ArticleCreator}</a></p>
+                            <p><a href="/accountcenter?username=${item.ArticleCreator}" class="article-info hover:text-gray-800">${item.ArticleCreator}</a></p>
                         </div>
-                        <p class="align-center">
+                        <p class="mt-5 text-zinc-400">
                             ${item.ArticleContent}
-                            <a href="/viewarticle?articleID=${item.ArticleID}" class="read-more">
+                            <a href="/viewarticle?articleID=${item.ArticleID}" class="read-more text-gray-500 hover:text-gray-800">
                                 Read more
                             </a>
                         </p>

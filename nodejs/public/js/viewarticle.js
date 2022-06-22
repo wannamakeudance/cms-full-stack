@@ -24,12 +24,18 @@ buttonClicked = (event, articleID) => {
     <div id="outerDiv-${commentID}">
         <form action="/updateComment?articleID=${articleID}&commentID=${commentID}"
             method="post" onsubmit="" class="flex-row align-center justify-sb">
-            <textarea type="textarea" class="form-control reply-text" id="commentContent" name="commentContent"
-                style="resize: none;min-height: 70px;max-height: 240px;">${commentContent.innerText}</textarea>
-            <div class="flex-col">
-                <input type="submit" name="done" value="done" class="button button-3d button-mini center done-button" />
-                <button class="button button-3d button-mini center button-light button-red" onClick="cancelbuttonClicked()"
-                    id="cancelButton-${commentID}">Cancel</button>
+            <textarea type="textarea" 
+                class="resize-none border-gray-300 rounded-md focus:border-gray-400 focus:ring-0 w-full" 
+                id="commentContent" name="commentContent"
+                style=min-height: 70px;max-height: 240px;">${commentContent.innerText}</textarea>
+            <div class="flex">
+                <input type="submit" name="done" value="DONE" 
+                    class="basic-btn text-xs w-8 h-8 flex justify-center bg-teal-500" />
+                <button class="basic-btn text-xs w-8 h-8 flex justify-center ml-3 bg-gray-400" 
+                    onClick="cancelbuttonClicked()"
+                    id="cancelButton-${commentID}">
+                    CANCEL
+                </button>
             </div>
         </form>
     </div>
@@ -39,7 +45,7 @@ buttonClicked = (event, articleID) => {
         var outerDiv = document.getElementById(`outerDiv-${commentID}`);
 
         outerDiv.outerHTML = `
-        <div class="flex-row align-center justify-sb" id="outerDiv-${commentID}">
+        <div class="flex" id="outerDiv-${commentID}">
             <blockquote class="" id="commentID-${commentID}">
             ${commentContent.innerText}
             </blockquote>

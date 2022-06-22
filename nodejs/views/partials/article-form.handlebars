@@ -1,0 +1,53 @@
+ {{!-- article title --}}
+ <input type="text" name="title" 
+    placeholder="Please enter the title of this article."
+    value="{{articleTitle}}"
+    class="
+        my-5
+        block
+        px-0.5
+        border-0 border-b-2 border-gray-200
+        focus:ring-0 focus:border-black
+        leading-10"
+>
+{{!-- article content --}}
+<textarea type="textarea"
+    class="resize-none"
+    style="min-height: 240px;max-height: 240px;" 
+    name="content"
+>
+    {{{content}}}
+</textarea>
+{{!-- article cover --}}
+<label for="coverImage" class="text-lg font-bold text-gray-500 my-3">Cover image</label>
+<p class="text-sm text-gray-400 my-2">(Recommended: .png or .jpg, < 500KB)</p>
+<input id="coverImage" type="file" class="file" name="coverImage"
+    accept=".png,.jpg,.jpeg,.bmp,.gif" onchange="loadFile(event)">&nbsp;
+<img id="output" width="500" />
+
+<section class="relative w-3/5" id="ori-img-div">
+    <img src="{{coverImagePath}}" id="originalImage" class="w-full">
+    {{#if notDefaultCover}}
+    <button onclick="deleteOldImage()" class="absolute top-5 text-2xl right-5">✖</button>
+    {{/if}}
+</section>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        setup: function (editor) {
+            editor.on('change', function (e) {
+                editor.save();
+            });
+        },
+        plugins: 'a11ychecker advcode table advlist lists image media anchor link autoresize',
+        toolbar: 'a11ycheck | blocks bold italic underline | bullist numlist',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        menubar: false,
+        max_height: 500,
+        min_height: 250,
+        lists_indent_on_tab: false,
+    });
+</script>

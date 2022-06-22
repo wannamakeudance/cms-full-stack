@@ -1,213 +1,82 @@
 {{> header}}
 
-<div class="container">
-    <div class="container card view-article">
-        <div class="row flex-col align-center">
-            <h1 class="view-article-title">{{title}}</h1>
-            <div class="flex-row align-center">
-                <img src="{{authorAvator}}" alt="" class="avatar avatar-article">
-                <a href="/accountcenter?username={{author}}">{{author}}</a>
-            </div>
-            <div class="flex-row align-center">
-                <h6>{{date}}</h6>
-            </div>
-        </div>
+<div class="m-36">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="flex-col align-center">
-                    <img src="{{coverImagePath}}" alt="" class="cover-image">
-                </div>
-                <div class="view-article">
-                    {{{content}}}
-                </div>
-            </div>
+    {{!-- article viewer --}}
+    <div class="text-center py-10 px-16 shadow-lg">
+        <h1 class="font-bold text-3xl block text-center mb-10">{{title}}</h1>
+        <a href="/accountcenter?username={{author}}" class="flex justify-center">
+            <img src="{{authorAvator}}" alt="" class="w-16 rounded-full mr-4">
+            <a href="/accountcenter?username={{author}}">{{author}}</a>
+        </a>
+        <p class="text-gray-500 my-4">{{date}}</p>
+        <img src="{{coverImagePath}}" alt="" class="cover-image mx-auto">
+        
+       
+        <div class="text-lg leading-8 text-left mt-7">
+            {{{content}}}
         </div>
+          
         {{#if myarticle}}
-        <div class="flex-row align-center card-footer justify-center">
-            <a href="./editarticle?articleID={{articleID}}" class="button button-3d button-small">Edit</a>
+        <div class="flex justify-center py-10">
+            <a href="/editarticle?articleID={{articleID}}" class="basic-btn mr-4 bg-teal-500">
+                Edit
+            </a>
             <form action="/deletearticle?articleID={{articleID}}" method="post"
                 onsubmit="return confirm('Are you sure to delete this article?');">
-                <input type="submit" name="delete" value="Delete" class="button button-3d button-small button-red" />
+                <input type="submit" name="delete" value="Delete" 
+                    class="basic-btn bg-red-500" />
             </form>
         </div>
         {{/if}}
     </div>
-    <div class="container card view-article">
-        <h3>Commments</h3>
-        {{#if username}}
-        <form action="/newcomment?articleID={{articleID}}" method="post">
-            <textarea type="textarea" name="commentContent" class="form-control" id=""
-                style="resize: none;min-height: 100px;max-height: 240px;"
-                placeholder="Add your comments here!"></textarea>
-            <div class="text-right text-smaller text-lightgray mt-1">
-                <input type="submit" value="Post" class="button button-3d button-small">
-            </div>
-        </form>
-        {{else}}
-        <p><a href="./login">Log in</a> to add or reply to comments!</p>
-        {{/if}}
-        {{#if commentsToShow.length}}
-        <div>
-            <button onclick="showHideComments()" id="show-comment" class="show-comment-button"> ▼ Show less
-                comments </button>
-        </div>
-        <div id="comment">
-            {{#each commentsToShow}}
-            {{#if this.layer1}}
-            <div class="col-md-12 offset-sm-0 comment-div">
-                <div class="flex-row align-center commenter-info">
-                    <img src="{{this.AvatarPath}}" alt="" class="avatar avatar-article">
-                    <div class="flex-col">
-                        <a href="#">{{this.CommentedByID}}</a>
-                        <p class="comment-time"> {{this.CreatedDateTime}}</p>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="flex-row align-center justify-sb" id="outerDiv-{{this.CommentID}}">
-                        {{#if this.mycomment}}
-                        <blockquote class="" id="commentID-{{this.CommentID}}">
-                            {{this.CommentContext}}
-                        </blockquote>
-                        <div class="flex-col" id="innerDiv-{{this.CommentID}}">
-                            <button class="button button-3d button-mini center"
-                                onClick="buttonClicked(event, {{../articleID}})"
-                                id="editButton-{{this.CommentID}}">Edit</button>
-                            <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
-                                method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
-                                <input type="submit" name="delete" value="Delete"
-                                    class="button button-3d button-mini button-red" />
-                            </form>
-                        </div>
-                        {{else if ../myarticle}}
-                        <blockquote class="" id="commentID-{{this.CommentID}}">
-                            {{this.CommentContext}}
-                        </blockquote>
-                        <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
-                            method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
-                            <input type="submit" name="delete" value="Delete"
-                                class="button button-3d button-mini button-red" />
-                        </form>
-                        {{else}}
-                        <blockquote class="not-my-comment">
-                            {{this.CommentContext}}
-                        </blockquote>
-                        {{/if}}
-                    </div>
-                    {{#if ../username}}
-                    <div class="">
-                        <form action="/newreply?articleID={{../articleID}}&replyToID={{CommentID}}" method="post"
-                            class="flex-row align-center">
-                            <input type="text" name="replyContent" id="replyContent" class="form-control reply-text"
-                                placeholder="Add a reply...">
-                            <div class="text-right text-smaller text-lightgray mt-1">
-                                <input type="submit" value="Post" class="button button-3d button-mini button-light">
-                            </div>
-                        </form>
-                    </div>
-                    {{/if}}
-                </div>
-            </div>
-            {{/if}}
-            {{#if this.layer2}}
-            <div class="col-md-11 offset-sm-1 comment-div">
-                <div class="flex-row align-center commenter-info">
-                    <img src="{{this.AvatarPath}}" alt="" class="avatar avatar-article">
-                    <div class="flex-col">
-                        <a href="#">{{this.CommentedByID}}</a>
-                        <p class="comment-time"> {{this.CreatedDateTime}}</p>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="flex-row align-center justify-sb" id="outerDiv-{{this.CommentID}}">
-                        {{#if this.mycomment}}
-                        <blockquote class="" id="commentID-{{this.CommentID}}">
-                            {{this.CommentContext}}
-                        </blockquote>
-                        <div class="flex-col" id="innerDiv-{{this.CommentID}}">
-                            <button class="button button-3d button-mini center"
-                                onClick="buttonClicked(event, {{../articleID}})"
-                                id="editButton-{{this.CommentID}}">Edit</button>
-                            <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
-                                method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
-                                <input type="submit" name="delete" value="Delete"
-                                    class="button button-3d button-mini button-red" />
-                            </form>
-                        </div>
-                        {{else if ../myarticle}}
-                        <blockquote class="" id="commentID-{{this.CommentID}}">
-                            {{this.CommentContext}}
-                        </blockquote>
-                        <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
-                            method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
-                            <input type="submit" name="delete" value="Delete"
-                                class="button button-3d button-mini button-red" />
-                        </form>
-                        {{else}}
-                        <blockquote class="not-my-comment">
-                            {{this.CommentContext}}
-                        </blockquote>
-                        {{/if}}
-                    </div>
-                    {{#if ../username}}
-                    <div class="">
-                        <form action="/newreply?articleID={{../articleID}}&replyToID={{CommentID}}" method="post"
-                            class="flex-row align-center">
-                            <input type="text" name="replyContent" id="replyContent" class="form-control reply-text"
-                                placeholder="Add a reply...">
-                            <div class="text-right text-smaller text-lightgray mt-1">
-                                <input type="submit" value="Post" class="button button-3d button-mini button-light">
-                            </div>
-                        </form>
-                    </div>
-                    {{/if}}
-                </div>
-            </div>
-            {{/if}}
-            {{#if this.layer3}}
-            <div class="col-md-10 offset-sm-2 comment-div">
-                <div class="flex-row align-center commenter-info">
-                    <img src="{{this.AvatarPath}}" alt="" class="avatar avatar-article">
-                    <div class="flex-col">
-                        <a href="#">{{this.CommentedByID}}</a>
-                        <p class="comment-time"> {{this.CreatedDateTime}}</p>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="flex-row align-center justify-sb" id="outerDiv-{{this.CommentID}}">
-                        {{#if this.mycomment}}
-                        <blockquote class="" id="commentID-{{this.CommentID}}">
-                            {{this.CommentContext}}
-                        </blockquote>
-                        <div class="flex-col" id="innerDiv-{{this.CommentID}}">
-                            <button class="button button-3d button-mini center"
-                                onClick="buttonClicked(event, {{../articleID}})"
-                                id="editButton-{{this.CommentID}}">Edit</button>
-                            <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
-                                method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
-                                <input type="submit" name="delete" value="Delete"
-                                    class="button button-3d button-mini button-red" />
-                            </form>
-                        </div>
-                        {{else if ../myarticle}}
-                        <blockquote class="" id="commentID-{{this.CommentID}}">
-                            {{this.CommentContext}}
-                        </blockquote>
-                        <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
-                            method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
-                            <input type="submit" name="delete" value="Delete"
-                                class="button button-3d button-mini button-red" />
-                        </form>
-                        {{else}}
-                        <blockquote class="not-my-comment">
-                            {{this.CommentContext}}
-                        </blockquote>
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
-            {{/if}}
-            {{/each}}
-            {{/if}}
 
-            <script src="./js/viewarticle.js"></script>
+    {{!-- comments list --}}
+    <div class="shadow-2xl shadow-gray-500 mt-5 pb-10">
+        <h3 class="font-bold p-10 text-gray-600">Commments</h3>
+
+        <form action="/newcomment?articleID={{articleID}}" method="post">
+            <textarea type="textarea" name="commentContent" 
+                class="
+                w-5/6
+                mx-auto
+                block
+                rounded-md	
+                border-b-2 border-gray-300
+                focus:ring-0 focus:border-gray-400
+                leading-10 resize-none" 
+                style="min-height: 100px;max-height: 240px;"
+                placeholder="Add your comments here!">
+            </textarea>
+            <button type="submit" class="block basic-btn w-1/5 mt-5 mx-auto">
+                POST
+            </button>
+        </form>
+
+        {{#if commentsToShow.length}}
+        
+        <button onclick="showHideComments()" id="show-comment" class="text-lg font-bold ml-10 text-zinc-600"> 
+            ▼ Show less comments 
+        </button>
+        
+        <ul id="comment">
+        {{#each commentsToShow}}
+            {{> comment}}
+            {{#if this.children}}
+                <ul>
+                    {{#each this.children}} 
+                        {{> comment}}
+                        {{#if this.children}}
+                        <ul>
+                            {{#each this.children}}
+                                {{> comment}}
+                            {{/each}}
+                            </ul>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            {{/if}}
+        {{/each}}
+        </ul>
+    {{/if}}
+<script src="./js/viewarticle.js"></script>
