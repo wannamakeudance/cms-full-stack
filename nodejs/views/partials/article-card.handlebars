@@ -1,8 +1,8 @@
 <div class="article-list card">
-    <a href="/viewarticle?articleID={{this.ArticleID}}">
+    <a href="/viewarticle?articleID={{this.ArticleID}}" class="cover-container">
         <img src="{{this.ArticleImagePath}}" class="cover-thumb max-w-xs h-36 mr-10" alt="cover">
     </a>
-    <div class="align-start article-main">
+    <div class="align-start article-main w-full">
         <div class="flex items-center">
             <button id="like" class="like-button text-red-500 text-3xl hover:opacity-80" 
                 articleId="{{this.ArticleID}}">

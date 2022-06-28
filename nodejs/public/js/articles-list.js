@@ -39,8 +39,8 @@
             for(let i = 0; i < res.data.length; i++) {
                 const item = res.data[i];
                 container.innerHTML += `
-                <div class="container card align-center article-list">
-                    <a href="/viewarticle?articleID=${item.ArticleID}">
+                <div class="card align-center article-list">
+                    <a href="/viewarticle?articleID=${item.ArticleID}" class="cover-container">
                         <img src="${item.ArticleImagePath}" class="cover-thumb max-w-xs h-36 mr-10" alt="cover">
                     </a>
                     <div class="article-main">

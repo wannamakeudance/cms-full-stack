@@ -7,8 +7,56 @@
     border: 4px solid #ef5d5d;
 }
 
-@media screen and (max-width: 800px) {
+.login-container {
+    background-image: url('/images/login.jpeg');
+}
+
+@media screen and (orientation:portrait) {
+    html {
+        font-size: 10px;
+    }
+
+    body, html {
+        width: 100vw;
+    }
+
     .header-nav-container a {
         display: none;
+    }
+
+    .login-container {
+        background-image: url('/images/login-mobile.jpg');
+    }
+    
+    .card {
+        flex-direction: column;
+    }
+
+    .card .cover-container {
+        width: 100%;
+    }
+
+    .card img {
+        min-width: 100%;
+        height: 20rem;
+        margin-right: 0;
+        margin-bottom: 1.8rem;
+    }
+
+    .article-list-container{
+        position: relative;
+        top: 45px;
+    }
+
+    .articles-filter span {
+        font-size: 10px;
+    }
+
+    .account-center-container {
+        flex-direction: column;
+    }
+    
+    .account-center-container .sidebar {
+        margin-left: 0;
     }
 }

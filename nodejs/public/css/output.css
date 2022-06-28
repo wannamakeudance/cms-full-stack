@@ -1245,6 +1245,11 @@ a:hover {
   overflow-y: auto;
 }
 
+.overscroll-auto {
+  -ms-scroll-chaining: chained;
+      overscroll-behavior: auto;
+}
+
 .rounded-md {
   border-radius: 0.375rem;
 }
@@ -1367,6 +1372,14 @@ a:hover {
 
 .bg-\[url\(\'\/images\/login\.jpeg\'\)\] {
   background-image: url('/images/login.jpeg');
+}
+
+.bg-\[url\(\'\/images\/login-mobile\.jpg\'\)\] {
+  background-image: url('/images/login-mobile.jpg');
+}
+
+.bg-\[url\(\'\/images\/login-mobile2\.jpg\'\)\] {
+  background-image: url('/images/login-mobile2.jpg');
 }
 
 .bg-cover {
@@ -1873,6 +1886,14 @@ a:hover {
     align-items: center;
   }
 
+  .sm\:bg-\[url\(\'\/images\/login-mobile\.jpg\'\)\] {
+    background-image: url('/images/login-mobile.jpg');
+  }
+
+  .sm\:bg-\[url\(\'\/images\/login-mobile2\.jpg\'\)\] {
+    background-image: url('/images/login-mobile2.jpg');
+  }
+
   .sm\:p-0 {
     padding: 0px;
   }
@@ -1912,5 +1933,29 @@ a:hover {
   .sm\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:bg-\[url\(\'\/images\/login\.jpeg\'\)\] {
+    background-image: url('/images/login.jpeg');
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:bg-\[url\(\'\/images\/login\.jpeg\'\)\] {
+    background-image: url('/images/login.jpeg');
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:bg-\[url\(\'\/images\/login\.jpeg\'\)\] {
+    background-image: url('/images/login.jpeg');
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:bg-\[url\(\'\/images\/login\.jpeg\'\)\] {
+    background-image: url('/images/login.jpeg');
   }
 }
