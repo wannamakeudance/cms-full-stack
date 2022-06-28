@@ -4,38 +4,31 @@
 
 @layer components {
     .card {
-      background-color: theme('colors.white');
-      border-radius: theme('borderRadius.lg');
-      padding: theme('spacing.6');
-      box-shadow: theme('dropShadow.xl');
-      display: flex;
-      align-items: center;
-      margin: theme('margin.10');
+        @apply m-10 flex items-center p-6 bg-white shadow-2xl shadow-gray-200;
     }
+  
     .sort-option {
-        border: 2px solid rgb(20, 184, 166);
-        color: rgb(20, 184, 166);   
-        padding: theme('spacing.2');
-        border-radius: 10px;
-        margin-right: 12px;
+        @apply mr-4 rounded-lg p-2 text-teal-500 border-2 border-teal-500;
     }
+    
     .sort-selected {
-        background: rgb(20, 184, 166); 
-        color: theme('colors.white');
+        @apply text-white bg-teal-600;
     }
+
     .basic-btn {
-        background: black;
-        padding: 10px 50px;
-        color: white;
+        @apply text-white bg-black px-9 py-2;
     }
+   
     .basic-btn:hover {
-        opacity: .8;
+        @apply opacity-80;
     }
+   
     a {
-        color: rgb(20, 184, 166); 
+        @apply text-teal-500;
     }
+   
     a:hover {
-        color: #0f172a;
+        @apply text-zinc-900;
     }
 
     #comment li,
