@@ -1,6 +1,6 @@
-<section class="article-list-container pl-14 ">
+<section class="article-list-container">
     {{#if articleList.length}}
-    <div class="flex items-center articles-filter">
+    <div class="flex items-center articles-filter pl-14">
         <span class="font-bold text-2xl text-zinc-500">Sorting by:</span>
         <button class="sort-option sort-selected ml-10" 
             id="sort-new">Newest</button>
@@ -16,7 +16,7 @@
         {{/each}}
     </section>
     {{else}}
-    <h4 class="text-xl font-bold text-gray-400 empty-tips mt-10">
+    <h4 class="text-xl font-bold text-gray-400 empty-tips mt-10 pl-14">
         You have no artilces can be seen.<br>
         {{#if isCurrentUser}}
         <a href="/newarticle" class="mt-5 block">

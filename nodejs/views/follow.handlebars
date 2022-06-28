@@ -1,16 +1,18 @@
 {{> header}}
 <div class="flex w-2/3 mx-auto mt-36">
     {{> profile-sidebar}}
-    <div class="flex-1 min-h-screen ml-10 pt-10 shadow-3xl bg-zinc-100">
+    <div class="flex-1 min-h-screen ml-10 pt-10 shadow-3xl bg-stone-100">
         {{#if allUsersSubscribedTo}}
             {{#each allUsersSubscribedTo}}
-            <div class="flex shadow-lg items-center w-3/4 mx-auto px-16 py-5 hover:shadow-gray-400 bg-teal-50">
-                <img src="{{this.AvatarPath}}" alt="" class="rounded-full w-16 shadow-xl mr-10">
+            <div class="flex shadow-lg items-center w-3/4 mx-auto px-16 py-5 hover:shadow-gray-400 bg-stone-600">
+                <img src="{{this.AvatarPath}}" 
+                    class="rounded-full w-16 mr-10 border-white border-2">
                 <div>
-                    <a href="/accountcenter?username={{this.SubscribedTo}}" class="font-bold text-2xl mb-4">
+                    <a href="/accountcenter?username={{this.SubscribedTo}}" 
+                        class="font-bold text-2xl mb-4 hover:text-white">
                         {{this.SubscribedTo}}
                     </a>
-                    <p>{{this.AboutMeDescription}}</p>
+                    <p class="text-white mt-2">{{this.AboutMeDescription}}</p>
                 </div>
             </div>
             {{/each}}

@@ -5,14 +5,13 @@
     {{!-- article viewer --}}
     <div class="text-center py-10 px-16 shadow-lg">
         <h1 class="font-bold text-3xl block text-center mb-10">{{title}}</h1>
-        <a href="/accountcenter?username={{author}}" class="flex justify-center">
-            <img src="{{authorAvator}}" alt="" class="w-16 rounded-full mr-4">
-            <a href="/accountcenter?username={{author}}">{{author}}</a>
+        <a href="/accountcenter?username={{author}}" class="flex justify-center items-center">
+            <img src="{{authorAvator}}" alt="" class="w-12 rounded-full mr-4"/>
+           {{author}}
         </a>
-        <p class="text-gray-500 my-4">{{date}}</p>
+        <p class="text-gray-500 my-6">{{date}}</p>
         <img src="{{coverImagePath}}" alt="" class="cover-image mx-auto">
-        
-       
+    
         <div class="text-lg leading-8 text-left mt-7">
             {{{content}}}
         </div>
