@@ -30,8 +30,8 @@
     a:hover {
         @apply text-zinc-900;
     }
-    #comment li,
-    #comment ul {
+    .comments-list li,
+    .comments-list ul {
         padding-left: 50px;
     }
 }

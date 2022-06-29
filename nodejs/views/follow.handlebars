@@ -1,7 +1,7 @@
 {{> header}}
-<div class="flex w-2/3 mx-auto mt-36">
+<div class="flex w-2/3 mx-auto mt-36 follow-container">
     {{> profile-sidebar}}
-    <div class="flex-1 min-h-screen ml-10 pt-10 shadow-3xl bg-stone-100">
+    <div class="follow-list flex-1 min-h-screen ml-10 pt-10 shadow-3xl bg-stone-100">
         {{#if allUsersSubscribedTo}}
             {{#each allUsersSubscribedTo}}
             <div class="flex shadow-lg items-center w-3/4 mx-auto px-16 py-5 hover:shadow-gray-400 bg-stone-600">

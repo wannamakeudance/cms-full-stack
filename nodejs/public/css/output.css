@@ -824,8 +824,8 @@ a:hover {
   color: rgb(24 24 27 / var(--tw-text-opacity));
 }
 
-#comment li,
-    #comment ul {
+.comments-list li,
+    .comments-list ul {
   padding-left: 50px;
 }
 
@@ -1017,6 +1017,10 @@ a:hover {
   margin-top: 1.75rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
 .mr-6 {
   margin-right: 1.5rem;
 }
@@ -1153,6 +1157,10 @@ a:hover {
   width: 80%;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
 .w-1\/5 {
   width: 20%;
 }
@@ -1165,16 +1173,8 @@ a:hover {
   width: 1.5rem;
 }
 
-.w-12 {
-  width: 3rem;
-}
-
 .w-40 {
   width: 10rem;
-}
-
-.w-auto {
-  width: auto;
 }
 
 .max-w-xs {
@@ -1243,11 +1243,6 @@ a:hover {
 
 .overflow-y-auto {
   overflow-y: auto;
-}
-
-.overscroll-auto {
-  -ms-scroll-chaining: chained;
-      overscroll-behavior: auto;
 }
 
 .rounded-md {
@@ -1374,14 +1369,6 @@ a:hover {
   background-image: url('/images/login.jpeg');
 }
 
-.bg-\[url\(\'\/images\/login-mobile\.jpg\'\)\] {
-  background-image: url('/images/login-mobile.jpg');
-}
-
-.bg-\[url\(\'\/images\/login-mobile2\.jpg\'\)\] {
-  background-image: url('/images/login-mobile2.jpg');
-}
-
 .bg-cover {
   background-size: cover;
 }
@@ -1455,11 +1442,6 @@ a:hover {
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .pt-32 {
@@ -1886,14 +1868,6 @@ a:hover {
     align-items: center;
   }
 
-  .sm\:bg-\[url\(\'\/images\/login-mobile\.jpg\'\)\] {
-    background-image: url('/images/login-mobile.jpg');
-  }
-
-  .sm\:bg-\[url\(\'\/images\/login-mobile2\.jpg\'\)\] {
-    background-image: url('/images/login-mobile2.jpg');
-  }
-
   .sm\:p-0 {
     padding: 0px;
   }
@@ -1918,44 +1892,5 @@ a:hover {
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-
-  .sm\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
-  .sm\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .sm\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:bg-\[url\(\'\/images\/login\.jpeg\'\)\] {
-    background-image: url('/images/login.jpeg');
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:bg-\[url\(\'\/images\/login\.jpeg\'\)\] {
-    background-image: url('/images/login.jpeg');
-  }
-}
-
-@media (min-width: 1280px) {
-  .xl\:bg-\[url\(\'\/images\/login\.jpeg\'\)\] {
-    background-image: url('/images/login.jpeg');
-  }
-}
-
-@media (min-width: 1536px) {
-  .\32xl\:bg-\[url\(\'\/images\/login\.jpeg\'\)\] {
-    background-image: url('/images/login.jpeg');
   }
 }

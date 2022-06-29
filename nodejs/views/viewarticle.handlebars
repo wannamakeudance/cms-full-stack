@@ -1,6 +1,6 @@
 {{> header}}
 
-<div class="m-36">
+<div class="m-36 view-article-container">
 
     {{!-- article viewer --}}
     <div class="text-center py-10 px-16 shadow-lg">
@@ -54,11 +54,12 @@
 
         {{#if commentsToShow.length}}
         
-        <button onclick="showHideComments()" id="show-comment" class="text-lg font-bold ml-10 text-zinc-600"> 
+        <button onclick="showHideComments()" id="show-comment" 
+            class="text-lg font-bold ml-10 mt-6 text-zinc-600"> 
             ▼ Show less comments 
         </button>
         
-        <ul id="comment">
+        <ul class="comments-list">
         {{#each commentsToShow}}
             {{> comment}}
             {{#if this.children}}

@@ -28,6 +28,38 @@
         background-image: url('/images/login-mobile.jpg');
     }
     
+    .login-container form {
+        width: 80%;
+    }
+
+    .view-article-container {
+        margin: 0;
+        margin-top: 100px;
+    }
+    
+    .comments-list input[name="delete"] {
+        width: 60px;
+    }
+
+    .view-article-container ul,
+    .view-article-container li {
+        padding-left: 0 !important;
+    }
+
+    .view-article-container ul:not(:first-child) {
+        padding-left: 10px !important;
+    }
+
+    .follow-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .follow-container .follow-list {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
     .card {
         flex-direction: column;
     }
@@ -52,11 +84,15 @@
         font-size: 10px;
     }
 
+    .articles-filter button{
+        margin-left: 2px;
+    }
+
     .account-center-container {
         flex-direction: column;
     }
     
-    .account-center-container .sidebar {
+    .sidebar {
         margin-left: 0;
     }
 }
