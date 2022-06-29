@@ -25,11 +25,15 @@
     }
     
     #accountForm label {
-        margin-left: 12px;
+        margin-left: 18px;
     }
     
     #accountForm .avatars-list {
         margin-left: 0;
+    }
+
+    #deleteAccountModal .relative {
+        top: -50rem;
     }
 
     .login-container {
@@ -93,6 +97,11 @@
 
     .articles-filter button{
         margin-left: 2px;
+    }
+
+    .edit-account-container {
+        padding-top: 200px;
+        height: 100vh;
     }
 
     .account-center-container,
