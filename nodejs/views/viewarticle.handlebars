@@ -53,12 +53,12 @@
 
         {{#if commentsToShow.length}}
         
-        <button onclick="showHideComments()" id="show-comment" 
+        <button id="show-comment" 
             class="text-lg font-bold ml-10 mt-6 text-zinc-600"> 
-            ▼ Show less comments 
+            ▼ Show comments 
         </button>
         
-        <ul class="comments-list">
+        <ul class="comments-list hidden">
         {{#each commentsToShow}}
             {{> comment}}
             {{#if this.children}}

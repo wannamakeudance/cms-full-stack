@@ -1049,14 +1049,6 @@ a:hover {
   margin-top: 1rem;
 }
 
-.mt-28 {
-  margin-top: 7rem;
-}
-
-.mt-32 {
-  margin-top: 8rem;
-}
-
 .block {
   display: block;
 }
@@ -1319,6 +1311,11 @@ a:hover {
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-stone-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 244 / var(--tw-bg-opacity));
@@ -1327,11 +1324,6 @@ a:hover {
 .bg-stone-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(87 83 78 / var(--tw-bg-opacity));
-}
-
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-red-500 {
@@ -1417,14 +1409,14 @@ a:hover {
   padding-bottom: 1.25rem;
 }
 
-.px-20 {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
+}
+
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 .px-10 {
@@ -1456,16 +1448,20 @@ a:hover {
   padding-top: 8rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
 .pt-10 {
   padding-top: 2.5rem;
 }
 
 .pt-40 {
   padding-top: 10rem;
-}
-
-.pb-10 {
-  padding-bottom: 2.5rem;
 }
 
 .pl-14 {
@@ -1486,14 +1482,6 @@ a:hover {
 
 .pb-4 {
   padding-bottom: 1rem;
-}
-
-.pt-4 {
-  padding-top: 1rem;
-}
-
-.pb-20 {
-  padding-bottom: 5rem;
 }
 
 .text-left {

@@ -1,54 +1,35 @@
 <li class="shadow-lg">
     <div class="flex px-10 pt-10">
-        <img src="{{this.AvatarPath}}" class="avatar rounded-full w-10 mr-6">
+        <img src="{{AvatarPath}}" class="avatar rounded-full w-10 mr-6">
         <div class="text-sm text-gray-400">
-            <a href="#">{{this.CommentedByID}}</a>
-            <p class="comment-time"> {{this.CreatedDateTime}}</p>
+            <a href="#">{{CommentedByID}}</a>
+            <p class="comment-time"> {{CreatedDateTime}}</p>
         </div>
     </div>
-    <div class="flex justify-between px-6 pb-5" id="outerDiv-{{this.CommentID}}">
-        
-        {{#if this.mycomment}}
-        
-        <blockquote class="pl-20" id="commentID-{{this.CommentID}}">
-            {{this.CommentContext}}
+    <div class="flex justify-between px-6 pb-5" style="user-select: none;"
+        id="outerDiv-{{CommentID}}">
+        <blockquote class="pl-20" id="commentID-{{CommentID}}">
+            <span>{{CommentContext}}</span>
+            <a class="font-bold reply-button cursor-pointer ml-10">REPLY</a>
         </blockquote>
-        <div class="text-white text-xs flex" id="innerDiv-{{this.CommentID}}">
+
+        {{#if this.mycomment}}
+        <div class="text-white text-xs flex" id="innerDiv-{{CommentID}}">
             <button class="basic-btn bg-teal-500 mr-6 w-8 h-8 flex justify-center"
-                onClick="buttonClicked(event, {{../articleID}})"
-                id="editButton-{{this.CommentID}}">
+                onClick="buttonClicked(event, {{ArticleID}})"
+                id="editButton-{{CommentID}}">
                 EDIT
             </button>
-            <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
-                method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
-                <input type="submit" name="delete" value="DELETE"
-                    class="basic-btn bg-red-600 w-8 h-8 flex justify-center" 
-                />
-            </form>
+            {{> comment-delete}}
         </div>
 
         {{else if myarticle}}
-
-        <blockquote class="" id="commentID-{{this.CommentID}}">
-            {{this.CommentContext}}
-        </blockquote>
-        <form action="/deleteComment?articleID={{../articleID}}&commentID={{this.CommentID}}"
-            method="post" onsubmit="return confirm('Are you sure to delete this comment?');">
-            <input type="submit" name="delete" value="Delete"
-                class="basic-btn bg-red-600 w-8 h-8 flex justify-center"
-            />
-        </form>
-
-        {{else}}
-
-        <blockquote class="not-my-comment">
-            {{this.CommentContext}}
-        </blockquote>
-
+        {{> comment-delete}}
         {{/if}}
+
     </div>
     <form action="/newreply?articleID={{ArticleID}}&replyToID={{CommentID}}" method="post"
-        class="flex items-center justify-end pb-5">
+        class="hidden items-center justify-end pb-5 reply-comment">
         <input type="text" name="replyContent" id="replyContent" 
             class="w-3/5
                 block
@@ -62,3 +43,35 @@
         </button>
     </form>
 </li>
+
+<script>
+    window.addEventListener('load', function() {
+
+        // show or hide comments list
+        const showMoreBtn = document.querySelector('#show-comment');
+        const list = document.querySelector('.comments-list');
+        showMoreBtn.onclick = function() {
+            if (list.classList.contains('hidden')) {
+                list.classList.remove('hidden');
+            } else {
+                list.classList.add('hidden');
+            }
+        };
+
+        // show or hide reply inputs
+        const replys = document.querySelectorAll('.reply-button');
+        for(let i = 0; i < replys.length; i++) {
+            replys[i].onclick = function() {
+                const root = this.parentElement.parentElement.parentElement;
+                const replyInput = root.querySelector('.reply-comment');
+                if (replyInput.classList.contains('hidden')) {
+                    replyInput.classList.remove('hidden');
+                    replyInput.classList.add('flex');
+                } else {
+                    replyInput.classList.add('hidden');
+                    replyInput.classList.remove('flex');
+                }
+            };
+        }
+    })
+</script>

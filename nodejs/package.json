@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "dev": "node app.js && npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
