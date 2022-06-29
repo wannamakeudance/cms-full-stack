@@ -51,7 +51,6 @@ function checkPasswords(accountForm) {
     const submitButton = accountForm.querySelector('button');
     secondPassword.addEventListener('blur', function() {
         const errorTips = accountForm.querySelector('.error-tips');
-        console.log(errorTips)
         if (this.value === firstPassword.value) {
             errorTips.classList.add('opacity-0');
             submitButton.removeAttribute('disabled');

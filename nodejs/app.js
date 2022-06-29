@@ -43,10 +43,11 @@ app.use(require("./middleware/toaster-middleware.js"));
 
 // Setup routes
 app.use(require("./routes/API.js"));
-app.use(require("./routes/artilce-list-router.js"));
+app.use(require("./routes/artilce-list-router"));
 app.use(require("./routes/account-router"));
 app.use(require("./routes/profile-router"));
 app.use(require("./routes/article-router"));
+app.use(require('./routes/comment-router'));
 app.use(require('./routes/notification-router'));
 
 // Start the server running.

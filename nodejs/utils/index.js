@@ -7,6 +7,7 @@ const followersDao = require('../modules/followers-dao.js');
 const newCommentNotificationDao = require('../modules/notification-dao/newCommentNotification-dao');
 const newArticleNotifcationDao = require('../modules/notification-dao/newArticleNotifcation-dao');
 const newSubscriberNotifcationDao = require('../modules/notification-dao/newSubscriberNotifcation-dao');
+const fs = require('fs');
 
 /**
  * handle like status in the article list
@@ -79,7 +80,30 @@ async function notifyHandler({
     }
 }
 
+async function resizeImage(fileInfo, jimp) {
+
+    const originalName = fileInfo.originalname;
+    const extension = originalName.toLowerCase().substring(originalName.lastIndexOf("."));
+
+    const oldFileName = fileInfo.path;
+    const numberOfImages = fs.readdirSync("public/images/thumbnails").length;
+
+    let newFileName = `./public/images/coverImages/image_${numberOfImages}${extension}`;
+    if (oldFileName == 'defaultCover') {
+        newFileName = `./public/images/coverImages/${oldFileName}${extension}`;
+    }
+
+    fs.renameSync(oldFileName, newFileName);
+
+    const image = await jimp.read(newFileName);
+    image.cover(320, 214, jimp.HORIZONTAL_ALIGN_CENTER | jimp.VERTICAL_ALIGN_MIDDLE);
+    await image.write(`./public/images/thumbnails/image_${numberOfImages}${extension}`)
+
+    return `images/coverImages/image_${numberOfImages}${extension}`;     
+}
+
 module.exports = {
     likeStatusHandler,
-    notifyHandler
+    notifyHandler,
+    resizeImage
 };
