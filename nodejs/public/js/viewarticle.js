@@ -3,7 +3,48 @@
  * @author Ting Wang
  */
 
+ window.addEventListener('load', function() {
 
+    // show or hide comments list
+    const showMoreBtn = document.querySelector('#show-comment');
+    const list = document.querySelector('.comments-list');
+    showMoreBtn.onclick = function() {
+        if (list.classList.contains('hidden')) {
+            list.classList.remove('hidden');
+        } else {
+            list.classList.add('hidden');
+        }
+    };
+
+    // show or hide reply inputs
+    const replys = document.querySelectorAll('.reply-button');
+    for(let i = 0; i < replys.length; i++) {
+        replys[i].onclick = function() {
+            const root = this.parentElement.parentElement.parentElement;
+            const replyInput = root.querySelector('.reply-comment');
+            if (replyInput.classList.contains('hidden')) {
+                replyInput.classList.remove('hidden');
+                replyInput.classList.add('flex');
+            } else {
+                replyInput.classList.add('hidden');
+                replyInput.classList.remove('flex');
+            }
+        };
+    }
+
+    const toSeeMore = document.querySelectorAll('.more-replies-button');
+     for(let i = 0; i < toSeeMore.length; i++) {
+        toSeeMore[i].onclick = function() {
+            const root = this.parentElement.parentElement.parentElement;
+            const replyList = root.nextElementSibling;
+            if (replyList.classList.contains('hidden')) {
+                replyList.classList.remove('hidden');
+            } else {
+                replyList.classList.add('hidden');
+            }
+        };
+    }
+});
 buttonClicked = (event, articleID) => {
     const commentID = event.target.id.substring(event.target.id.lastIndexOf("-") + 1);
     const outerDiv = document.getElementById(`outerDiv-${commentID}`);

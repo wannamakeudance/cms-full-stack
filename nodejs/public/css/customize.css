@@ -127,4 +127,12 @@
     .sidebar {
         margin-left: 0;
     }
+
+    .reply-button {
+        margin-left: 0;
+    }
+
+    #cancel {
+        width: 60px;
+    }
 }

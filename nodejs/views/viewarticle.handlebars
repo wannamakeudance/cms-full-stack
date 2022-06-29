@@ -62,18 +62,18 @@
         {{#each commentsToShow}}
             {{> comment}}
             {{#if this.children}}
-                <ul>
-                    {{#each this.children}} 
-                        {{> comment}}
-                        {{#if this.children}}
-                        <ul>
-                            {{#each this.children}}
-                                {{> comment}}
-                            {{/each}}
-                            </ul>
-                        {{/if}}
+            <ul class="hidden">
+                {{#each this.children}} 
+                {{> comment}}
+                {{#if this.children}}
+                <ul class="hidden">
+                    {{#each this.children}}
+                    {{> comment}}
                     {{/each}}
                 </ul>
+                {{/if}}
+                {{/each}}
+            </ul>
             {{/if}}
         {{/each}}
         </ul>
