@@ -23,6 +23,14 @@
     .header-nav-container a {
         display: none;
     }
+    
+    #accountForm label {
+        margin-left: 12px;
+    }
+    
+    #accountForm .avatars-list {
+        margin-left: 0;
+    }
 
     .login-container {
         background-image: url('/images/login-mobile.jpg');
@@ -51,7 +59,6 @@
     }
 
     .follow-container {
-        flex-direction: column;
         width: 100%;
     }
 
@@ -60,8 +67,8 @@
         margin-top: 20px;
     }
 
-    .card {
-        flex-direction: column;
+    form[name="newArticle"] {
+        width: 100%;
     }
 
     .card .cover-container {
@@ -88,8 +95,24 @@
         margin-left: 2px;
     }
 
-    .account-center-container {
+    .account-center-container,
+    .analytics-container,
+    .card,
+    .follow-container,
+    .analytics-container .flex:not(:first-child){
         flex-direction: column;
+    }
+
+    .analytics-container section {
+        margin-left: 0;
+    }
+
+    .analytics-container .analytic-details {
+        padding-left: 16px;
+    }
+
+    .analytics-container .flex .mr-8 {
+        margin-right: auto;
     }
     
     .sidebar {

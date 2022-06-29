@@ -1,11 +1,11 @@
 {{> header}}
-<section class="login-container edit-account-container h-screen pt-32">
+<section class="login-container edit-account-container pt-32 pb-20 bg-cover">
     <form action="/accountedit" method="post" 
         id="accountForm" 
-        class="sign-up edit-account box-shadow-basic flex flex-col w-3/5 mx-auto shadow-2xl">
+        class="bg-white sign-up edit-account box-shadow-basic flex flex-col w-3/5 mx-auto shadow-2xl">
         {{> form-error-message}}
         <input required value="{{userDetails.UserName}}"type="text" name="username" placeholder="enter a username"
-        class="mt-5
+        class="pt-4
             block
             w-5/6
             mx-auto

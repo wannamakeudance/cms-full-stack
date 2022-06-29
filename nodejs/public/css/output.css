@@ -1049,6 +1049,14 @@ a:hover {
   margin-top: 1rem;
 }
 
+.mt-28 {
+  margin-top: 7rem;
+}
+
+.mt-32 {
+  margin-top: 8rem;
+}
+
 .block {
   display: block;
 }
@@ -1478,6 +1486,14 @@ a:hover {
 
 .pb-4 {
   padding-bottom: 1rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
+.pb-20 {
+  padding-bottom: 5rem;
 }
 
 .text-left {
