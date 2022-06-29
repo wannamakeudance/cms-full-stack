@@ -80,6 +80,13 @@ async function notifyHandler({
     }
 }
 
+/**
+ * resize the image file and rename it in a new location
+ * 
+ * @param {Object} fileInfo 
+ * @param {Object} jimp 
+ * @returns {string} newfilePath
+ */
 async function resizeImage(fileInfo, jimp) {
 
     const originalName = fileInfo.originalname;
@@ -102,8 +109,31 @@ async function resizeImage(fileInfo, jimp) {
     return `images/coverImages/image_${numberOfImages}${extension}`;     
 }
 
+/**
+ * handle the comments list data
+ * 
+ * @param {Array} data 
+ * @param {string} username 
+ * @param {number} myarticle 
+ * @returns {Array} the handled data
+ */
+function commentsHandler(data, username, myarticle) {
+    for (let i = 0; i < data.length; i++) {
+        let cur = data[i];
+        cur.myarticle = myarticle;
+        if (cur.CommentedByID == username) {
+            cur.mycomment = 1;
+        }
+        if (cur.children) {
+            return commentsHandler(cur.children, username, myarticle);
+        }
+    }
+    return data;
+}
+
 module.exports = {
     likeStatusHandler,
     notifyHandler,
-    resizeImage
+    resizeImage,
+    commentsHandler
 };

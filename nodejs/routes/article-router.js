@@ -6,41 +6,21 @@ const express = require('express');
 const router = express.Router();
 const articleDao = require('../modules/article-dao.js');
 const articleCommentDao = require('../modules/articleComment-dao.js');
-const {notifyHandler, resizeImage} = require('../utils/index');
-// Setup multer (files will temporarily be saved in the "temp" folder).
-// const path = require("path");
+const {notifyHandler, resizeImage, commentsHandler} = require('../utils/index');
 const multer = require("multer");
+const jimp = require('jimp');
 const upload = multer({
     dest: './temp'
 });
-
-// Setup fs
-const fs = require("fs");
-
-// Setup jimp
-const jimp = require("jimp");
 
 /**
  * render the new article page
  */
 router.get('/newarticle', async function (req, res) {
     res.locals.title = `New Article`;
-    res.render("newarticle");
+    res.render('newarticle');
 });
 
-function commentsHandler(data, username, myarticle) {
-    for (let i = 0; i < data.length; i++) {
-        let cur = data[i];
-        cur.myarticle = myarticle;
-        if (cur.CommentedByID == username) {
-            cur.mycomment = 1;
-        }
-        if (cur.children) {
-            return commentsHandler(cur.children, username, myarticle);
-        }
-    }
-    return data;
-}
 /**
  * render the view article page
  */
@@ -101,7 +81,7 @@ router.get('/editarticle', async function (req, res) {
 
         // show edit content if it's created by current user
         const author = article.ArticleCreator;
-        if (username == author) {
+        if (username === author) {
             // this also change the title of the page in <head> 
             res.locals.title = `Edit Article`;
             res.locals.articleID = articleID;
@@ -169,7 +149,6 @@ router.post('/editarticle', upload.single("coverImage"), async function (req, re
         try {
             const article = await articleCommentDao.getArticleByArticleID(articleID);
             let filePath = deleteImg ? `images/coverImages/defaultCover.jpg` : article.ArticleImagePath;         
-            // get the info from the form
             let { title, content } = req.body;
             const newFileInfo = req.file;
             if (newFileInfo) {
